@@ -1,0 +1,5 @@
+[gd_resource type="TileSet" format=3 uid="uid://crcwthcriesie"]
+
+[resource]
+custom_data_layer_0/name = "pickable"
+custom_data_layer_0/type = 1
