@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cl4maew5aakih"]
+
+[ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="1_hqlhv"]
+[ext_resource type="Script" uid="uid://bkciifk8a2m3q" path="res://scripts/interactable_layer.gd" id="2_fmt7a"]
+[ext_resource type="PackedScene" uid="uid://b3wy7of1j1g41" path="res://scenes/pickable_tile.tscn" id="3_fmt7a"]
+
+[node name="InteractableLayer" type="TileMapLayer" unique_id=328784640]
+tile_set = ExtResource("1_hqlhv")
+script = ExtResource("2_fmt7a")
+pickable_item_scene = ExtResource("3_fmt7a")

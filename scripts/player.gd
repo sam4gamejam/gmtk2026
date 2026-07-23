@@ -1,53 +1,44 @@
 extends Node2D
 
-signal player_picked_tile 
+signal player_picked_tile(tile: PickableTile)
 
-## Time in seconds before allowing player movement, should be animation length
-@export var move_cooldown: float = 0.35
-
-@onready var tile_is_picked: bool = false
 @onready var can_move: bool = true
-@onready var move_timer: float = 0.0
+@onready var tile_is_already_picked: bool = false
 
 @onready var crosshair := $Crosshair
+@onready var layer := $"../InteractableLayer"
+@onready var move_timer := $MoveCooldownTimer
 @onready var sprite := $AnimatedSprite2D
+
+var tile: PickableTile
 
 func _ready() -> void:
 	position = position.snapped(Globals.tilesize)
+
 	player_picked_tile.connect(on_tile_picked)
+	move_timer.timeout.connect(move_timer_completed)
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("pick_tile"):
-		player_picked_tile.emit()
-			
-	move_timer += delta
-	
-	if move_timer >= move_cooldown:
-		can_move = true 
-	
 	if not can_move:
-		return 
-		
+		return
+
+	if Input.is_action_just_pressed("pick_tile"):
+		player_picked_tile.emit()
+		return
+
 	var movedir := Input.get_vector("left", "right", "up", "down")
-	
+
 	# Only allow one keypress, we could choose one direction instead of stopping
 	if movedir.length() != 1:
 		return
-		
-	#position = position.snapped(Globals.tilesize * movedir)
-	var new_position = (position + movedir * Globals.tilesize).clamp(Globals.tilesize/2, Globals.screensize - Globals.tilesize)
-	
-	# We check a new position to see if we moved, since we can bump into a wall or tile
-	if position == new_position:
-		return 
-		
-	can_move = false
-	move_timer = 0.0
-	position = new_position.snapped(Globals.tilesize)
-	
-	change_sprite_facing(movedir)
-	
-func change_sprite_facing(movedir: Vector2) -> void:
+
+	var current_move_body = tile if tile_is_already_picked else self
+	var just_moved: bool = move_object(current_move_body, movedir)
+
+	if current_move_body == self and just_moved:
+		change_player_sprite(movedir)
+
+func change_player_sprite(movedir: Vector2) -> void:
 	match movedir:
 		Vector2.LEFT:
 			sprite.animation = 'left'
@@ -56,16 +47,42 @@ func change_sprite_facing(movedir: Vector2) -> void:
 		Vector2.DOWN:
 			sprite.animation = 'down'
 		Vector2.UP:
-			sprite.animation = 'up'	
+			sprite.animation = 'up'
+
+func move_object(body, movedir: Vector2) -> bool:
+	#position = position.snapped(Globals.tilesize * movedir)
+	var new_position = (body.position + movedir * Globals.tilesize).clamp(Globals.tilesize/2, Globals.screensize - Globals.tilesize)
+
+	# We check a new position to see if we moved, since we can bump into a wall or tile
+	if body.position == new_position:
+		return false
+
+	can_move = false
+	move_timer.start()
+	body.position = new_position.snapped(Globals.tilesize)
+	return true
+
+func move_timer_completed() -> void:
+	can_move = true
+	move_timer.stop()
 
 func on_tile_picked() -> void:
-	if tile_is_picked:
-		crosshair.visible = true 
-		drop_tile()
-	else:
+	print('tile picked signal emitted!')
+	if tile_is_already_picked:
+		print('currently hovering tile')
+		if !layer.place_tile_at(global_position, tile):
+			#TODO: Make crosshair red to indicate this spot is no good
+			return
+
 		crosshair.visible = false
-				
-	tile_is_picked = !tile_is_picked
-	
-func drop_tile():
-	pass
+		tile = null
+	else:
+		print('just picked a tile')
+
+		tile = layer.pick_tile_at(global_position)
+		if tile == null:
+			return
+
+		crosshair.visible = true
+
+	tile_is_already_picked = !tile_is_already_picked

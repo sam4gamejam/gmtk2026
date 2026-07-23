@@ -15,6 +15,10 @@ var atlas_coords: Vector2i = Vector2i(-1, -1)
 func _ready() -> void:
 	_update_sprite()
 
+	#This is to fix the coordinate to the grid since we place things manually
+	position = position.snapped(Globals.tilesize)
+
+
 func _update_sprite() -> void:
 	if is_node_ready() and sprite:
 		sprite.texture = tile_texture

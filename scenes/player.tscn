@@ -69,3 +69,7 @@ animation = &"down"
 shape = SubResource("RectangleShape2D_rwgxs")
 
 [node name="Crosshair" parent="." unique_id=1934102694 instance=ExtResource("3_qhqgy")]
+visible = false
+
+[node name="MoveCooldownTimer" type="Timer" parent="." unique_id=1594326537]
+wait_time = 0.137

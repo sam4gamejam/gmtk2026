@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://cox2vh8b5o1ba"]
 
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="1_kyfjp"]
-[ext_resource type="Script" uid="uid://bkciifk8a2m3q" path="res://scripts/interactable_layer.gd" id="2_amxg5"]
+[ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="2_amxg5"]
 
 [node name="TestWorld" type="Node2D" unique_id=818001161]
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=2007690759]
 tile_set = ExtResource("1_kyfjp")
 
-[node name="InteractableLayer" type="TileMapLayer" parent="." unique_id=582207095]
-tile_set = ExtResource("1_kyfjp")
-script = ExtResource("2_amxg5")
+[node name="InteractableLayer" parent="." unique_id=328784640 instance=ExtResource("2_amxg5")]
