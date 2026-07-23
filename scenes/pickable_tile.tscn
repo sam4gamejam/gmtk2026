@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b3wy7of1j1g41"]
 
 [ext_resource type="Script" uid="uid://c543xb7da578c" path="res://scripts/pickable_tile.gd" id="1_q7ptg"]
+[ext_resource type="Texture2D" uid="uid://dyf2tlsdgaykh" path="res://icon.svg" id="2_olj63"]
 
 [node name="PickableTile" type="Node2D" unique_id=916165334]
 script = ExtResource("1_q7ptg")
+tile_texture = ExtResource("2_olj63")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1037224376]
