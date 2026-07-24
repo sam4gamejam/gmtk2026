@@ -10,6 +10,10 @@ func is_tile_pickable(global_pos: Vector2) -> bool:
 		return tile_data.get_custom_data("pickable")
 	return false
 
+func is_cell_empty(global_pos: Vector2) -> bool:
+	var map_coords = local_to_map(global_pos)
+	return get_cell_source_id(map_coords) == -1
+
 func pick_tile_at(global_pos: Vector2) -> PickableTile:
 	var map_coords = local_to_map(global_pos)
 
@@ -38,12 +42,10 @@ func pick_tile_at(global_pos: Vector2) -> PickableTile:
 	return null
 
 func place_tile_at(global_pos: Vector2, item: PickableTile) -> bool:
-	var map_coords = local_to_map(global_pos)
-
-	# Change later so we can stack tiles
-	if get_cell_source_id(map_coords) != -1:
+	if not is_cell_empty(global_pos):
 		return false
 
+	var map_coords = local_to_map(global_pos)
 	set_cell(map_coords, item.source_id, item.atlas_coords)
 	item.queue_free()
 	return true
