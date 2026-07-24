@@ -18,7 +18,7 @@ func _ready() -> void:
 	player_picked_tile.connect(on_tile_picked)
 	move_timer.timeout.connect(move_timer_completed)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not can_move:
 		return
 
@@ -70,19 +70,15 @@ func on_tile_picked() -> void:
 	print('tile picked signal emitted!')
 	if tile_is_already_picked:
 		print('currently hovering tile')
-		if !layer.place_tile_at(global_position, tile):
+		if !layer.place_tile_at(tile.global_position, tile):
 			#TODO: Make crosshair red to indicate this spot is no good
 			return
-
 		crosshair.visible = false
 		tile = null
 	else:
 		print('just picked a tile')
-
 		tile = layer.pick_tile_at(global_position)
 		if tile == null:
 			return
-
 		crosshair.visible = true
-
 	tile_is_already_picked = !tile_is_already_picked
