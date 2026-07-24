@@ -1,7 +1,15 @@
 class_name InteractableLayer
 extends TileMapLayer
 
+@export_range(0, 1, 0.05) var alpha_blend: float = 0.5
+@export var color_ok_here: Color = Color.SEA_GREEN
+@export var color_not_ok_here: Color = Color.DARK_RED
 @export var pickable_item_scene: PackedScene
+
+func change_tile_color(tile: PickableTile, color: Color) -> void:
+	var new_color = color
+	new_color.a = alpha_blend
+	tile.modulate = new_color
 
 func is_tile_pickable(global_pos: Vector2) -> bool:
 	var map_coords = local_to_map(global_pos)
@@ -47,3 +55,7 @@ func place_tile_at(global_pos: Vector2, item: PickableTile) -> bool:
 	set_cell(map_coords, item.source_id, item.atlas_coords)
 	item.queue_free()
 	return true
+
+func tile_just_moved(tile: PickableTile) -> void:
+	var new_color = color_ok_here if is_cell_empty(global_position) else color_not_ok_here
+	change_tile_color(tile, new_color)

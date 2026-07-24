@@ -8,3 +8,4 @@ script = ExtResource("1_q7ptg")
 tile_texture = ExtResource("2_olj63")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1037224376]
+texture = ExtResource("2_olj63")

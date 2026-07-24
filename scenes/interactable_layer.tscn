@@ -7,4 +7,7 @@
 [node name="InteractableLayer" type="TileMapLayer" unique_id=328784640]
 tile_set = ExtResource("1_hqlhv")
 script = ExtResource("2_fmt7a")
+alpha_blend = null
+color_ok_here = null
+color_not_ok_here = null
 pickable_item_scene = ExtResource("3_fmt7a")

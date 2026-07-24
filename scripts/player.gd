@@ -1,11 +1,12 @@
 extends Node2D
 
-signal player_picked_tile(tile: PickableTile)
+signal player_picked_tile
+signal tile_moved(tile: PickableTile)
 
 @onready var can_move: bool = true
 @onready var tile_is_already_picked: bool = false
 
-@onready var crosshair := $Crosshair
+#@onready var crosshair := $Crosshair
 @onready var layer := $"../InteractableLayer"
 @onready var move_timer := $MoveCooldownTimer
 @onready var sprite := $AnimatedSprite2D
@@ -13,9 +14,10 @@ signal player_picked_tile(tile: PickableTile)
 var tile: PickableTile
 
 func _ready() -> void:
-	position = position.snapped(Globals.tilesize)
+	position = position.snapped(Globals.tilesize/2)
 
 	player_picked_tile.connect(on_tile_picked)
+	tile_moved.connect(layer.tile_just_moved)
 	move_timer.timeout.connect(move_timer_completed)
 
 func _process(_delta: float) -> void:
@@ -35,8 +37,11 @@ func _process(_delta: float) -> void:
 	var current_move_body = tile if tile_is_already_picked else self
 	var just_moved: bool = move_object(current_move_body, movedir)
 
-	if current_move_body == self and just_moved:
-		change_player_sprite(movedir)
+	if just_moved:
+		if current_move_body == self:
+			change_player_sprite(movedir)
+		else:
+			tile_moved.emit(tile)
 
 func change_player_sprite(movedir: Vector2) -> void:
 	match movedir:
@@ -59,7 +64,7 @@ func move_object(body, movedir: Vector2) -> bool:
 
 	can_move = false
 	move_timer.start()
-	body.position = new_position.snapped(Globals.tilesize)
+	body.position = new_position.snapped(Globals.tilesize/2)
 	return true
 
 func move_timer_completed() -> void:
@@ -68,17 +73,21 @@ func move_timer_completed() -> void:
 
 func on_tile_picked() -> void:
 	print('tile picked signal emitted!')
+	print(global_position, global_position / Globals.tilesize)
 	if tile_is_already_picked:
 		print('currently hovering tile')
 		if !layer.place_tile_at(tile.global_position, tile):
 			#TODO: Make crosshair red to indicate this spot is no good
 			return
-		crosshair.visible = false
+		#crosshair.visible = false
 		tile = null
 	else:
 		print('just picked a tile')
 		tile = layer.pick_tile_at(global_position)
 		if tile == null:
 			return
-		crosshair.visible = true
+
+		layer.change_tile_color(tile, layer.color_ok_here)
+
+		#crosshair.visible = true
 	tile_is_already_picked = !tile_is_already_picked
