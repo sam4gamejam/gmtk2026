@@ -6,8 +6,10 @@ signal tile_moved(tile: PickableTile)
 @onready var can_move: bool = true
 @onready var tile_is_already_picked: bool = false
 
-#@onready var crosshair := $Crosshair
-@onready var layer := $"../InteractableLayer"
+@onready var world := get_node("/root/World")
+@onready var current_level := world.get_node(world.first_level)
+@onready var layer := current_level.get_node("InteractableLayer")
+
 @onready var move_timer := $MoveCooldownTimer
 @onready var sprite := $AnimatedSprite2D
 
@@ -52,6 +54,9 @@ func change_player_sprite(movedir: Vector2) -> void:
 			sprite.animation = 'down'
 		Vector2.UP:
 			sprite.animation = 'up'
+
+func level_changed(new_level: Node2D) -> void:
+	layer = new_level.get_node("InteractableLayer")
 
 func move_object(body, movedir: Vector2) -> bool:
 	var new_position = body.position + movedir * Globals.tilesize
