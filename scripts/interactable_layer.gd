@@ -45,6 +45,8 @@ func pick_tile_at(global_pos: Vector2) -> PickableTile:
 		item_instance.global_position = to_global(cell_world_pos)
 
 		item_instance.setup(texture, region, source_id, atlas_coords)
+		item_instance.z_index += 1
+
 		return item_instance
 
 	return null
@@ -59,5 +61,6 @@ func place_tile_at(global_pos: Vector2, item: PickableTile) -> bool:
 	return true
 
 func tile_just_moved(tile: PickableTile) -> void:
-	var new_color = color_ok_here if is_cell_empty(global_position) else color_not_ok_here
+	var new_color = color_ok_here if is_cell_empty(tile.global_position) else color_not_ok_here
 	change_tile_color(tile, new_color)
+	print('tile moved', global_position, tile.global_position)

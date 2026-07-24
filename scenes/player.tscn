@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://br4ogs86nqm2n" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://dqbq56iuhdnvd" path="res://graphics/placeholder/pokemon_main_character_sprites.jpg" id="2_g2els"]
-[ext_resource type="PackedScene" uid="uid://u5trosq2b6el" path="res://scenes/crosshair.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -55,7 +54,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwgxs"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=757764057 groups=["player"]]
@@ -63,14 +62,13 @@ motion_mode = 1
 script = ExtResource("1_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=598449083]
+position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_mq5r5")
 animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1701174052]
-shape = SubResource("RectangleShape2D_rwgxs")
-
-[node name="Crosshair" parent="." unique_id=1934102694 instance=ExtResource("3_qhqgy")]
-visible = false
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_g2els")
 
 [node name="MoveCooldownTimer" type="Timer" parent="." unique_id=1594326537]
 wait_time = 0.137

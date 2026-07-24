@@ -14,8 +14,7 @@ signal tile_moved(tile: PickableTile)
 var tile: PickableTile
 
 func _ready() -> void:
-	position = position.snapped(Globals.tilesize/2)
-
+	position = position.snapped(Globals.tilesize)
 	player_picked_tile.connect(on_tile_picked)
 	tile_moved.connect(layer.tile_just_moved)
 	move_timer.timeout.connect(move_timer_completed)
@@ -55,8 +54,8 @@ func change_player_sprite(movedir: Vector2) -> void:
 			sprite.animation = 'up'
 
 func move_object(body, movedir: Vector2) -> bool:
-	#position = position.snapped(Globals.tilesize * movedir)
-	var new_position = (body.position + movedir * Globals.tilesize).clamp(Globals.tilesize/2, Globals.screensize - Globals.tilesize)
+	var new_position = body.position + movedir * Globals.tilesize
+	new_position = new_position.clamp(Vector2.ZERO, Globals.screensize - Globals.tilesize)
 
 	# We check a new position to see if we moved, since we can bump into a wall or tile
 	if body.position == new_position:
@@ -64,6 +63,8 @@ func move_object(body, movedir: Vector2) -> bool:
 
 	can_move = false
 	move_timer.start()
+	## has to be snapped to tilesize/2 because we also move the tiles in this function,
+	## and somehow they will be offset by half if we snap to tilesize...
 	body.position = new_position.snapped(Globals.tilesize/2)
 	return true
 
@@ -74,20 +75,15 @@ func move_timer_completed() -> void:
 func on_tile_picked() -> void:
 	print('tile picked signal emitted!')
 	print(global_position, global_position / Globals.tilesize)
+
 	if tile_is_already_picked:
-		print('currently hovering tile')
 		if !layer.place_tile_at(tile.global_position, tile):
-			#TODO: Make crosshair red to indicate this spot is no good
 			return
-		#crosshair.visible = false
 		tile = null
 	else:
-		print('just picked a tile')
 		tile = layer.pick_tile_at(global_position)
 		if tile == null:
 			return
-
 		layer.change_tile_color(tile, layer.color_ok_here)
 
-		#crosshair.visible = true
 	tile_is_already_picked = !tile_is_already_picked

@@ -248,7 +248,7 @@ parameters/looping = true
 
 [node name="Player" parent="." unique_id=757764057 instance=ExtResource("1_rwgxs")]
 z_index = 1
-position = Vector2(158, 75)
+position = Vector2(160, 48)
 
 [node name="Background" parent="." unique_id=487721673 instance=ExtResource("2_4wyf3")]
 z_index = -1
