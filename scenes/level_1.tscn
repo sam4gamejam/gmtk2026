@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cj5ho4jei52nx"]
+
+[ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_014kd"]
+[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_bswci"]
+[ext_resource type="PackedScene" uid="uid://bedibnj3c3vso" path="res://scenes/level_hub.tscn" id="2_rus8k"]
+[ext_resource type="AudioStream" uid="uid://celdstl860kry" path="res://music/placeholder/game jam demo 2.mp3" id="3_5xbjy"]
+
+[node name="Level1" type="Node2D" unique_id=329364041]
+script = ExtResource("1_bswci")
+next_level = ExtResource("2_rus8k")
+music = ExtResource("3_5xbjy")
+
+[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("1_014kd")]
+position = Vector2(141, 50)
