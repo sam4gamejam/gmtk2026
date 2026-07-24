@@ -4,11 +4,11 @@ extends Node2D
 @onready var first_level = $LevelHub
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 
-var current_level: Node2D
+#var current_level: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	change_music(first_level.stream)
+	change_music(first_level.music)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,13 +19,12 @@ func change_music(stream: AudioStream, from_position: float = 0.0) -> void:
 	audio_player.stream = stream
 	audio_player.play(from_position)
 
-func change_level(current_level: Node2D, next_level: PackedScene) -> void:
-	var next_level_loaded = next_level.instantiate()
-	add_child(next_level_loaded)
+func change_level(current_level: Node2D, next_level: Node2D) -> void:
+	add_child(next_level)
 	remove_child(current_level)
 
 	#pass next_level.music.position or some such to continue the next track at the same position as the second argument
 	change_music(next_level.music)
 
 	# This could be a signal, but the world needs to change first, so I just put it as a function for now
-	player.level_changed(next_level_loaded)
+	player.level_changed(next_level)

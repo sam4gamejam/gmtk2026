@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_73tgf"]
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="1_vrqs0"]
 [ext_resource type="Texture2D" uid="uid://cqe55hmgwamcq" path="res://graphics/placeholder/beach_and_sea_tiles_by_peekychew_damb220-375w-2x.png" id="2_73tgf"]
-[ext_resource type="PackedScene" uid="uid://cj5ho4jei52nx" path="res://scenes/level_1.tscn" id="2_iwcab"]
 [ext_resource type="AudioStream" uid="uid://tnxcfhcmk2je" path="res://music/placeholder/hotel loop demo_1.mp3" id="2_wyviu"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="3_7750w"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="5_7750w"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyviu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwcab"]
 texture = ExtResource("2_73tgf")
 0:0/0 = 0
 3:0/0 = 0
@@ -237,11 +236,11 @@ texture = ExtResource("2_73tgf")
 21:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_iwcab"]
-sources/0 = SubResource("TileSetAtlasSource_wyviu")
+sources/0 = SubResource("TileSetAtlasSource_iwcab")
 
 [node name="LevelHub" type="Node2D" unique_id=1536317403]
 script = ExtResource("1_73tgf")
-next_level = ExtResource("2_iwcab")
+next_level_scene = "uid://bedibnj3c3vso"
 music = ExtResource("2_wyviu")
 
 [node name="Background" parent="." unique_id=487721673 instance=ExtResource("1_vrqs0")]

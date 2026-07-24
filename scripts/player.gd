@@ -4,12 +4,10 @@ signal player_picked_tile
 signal tile_moved(tile: PickableTile)
 
 @onready var can_move: bool = true
+@onready var level_is_changing: bool = false
 @onready var tile_is_already_picked: bool = false
 
-@onready var world := get_node("/root/World")
-@onready var current_level := world.get_node(world.first_level)
-@onready var layer := current_level.get_node("InteractableLayer")
-
+@onready var layer: InteractableLayer = $"../LevelHub/InteractableLayer"
 @onready var move_timer := $MoveCooldownTimer
 @onready var sprite := $AnimatedSprite2D
 
