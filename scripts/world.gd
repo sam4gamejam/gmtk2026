@@ -18,7 +18,6 @@ func change_music(stream: AudioStream, from_position: float = 0.0) -> void:
 func change_level(current_level: Node2D, next_level_scene: String) -> void:
 	var next_level: Node2D = load(next_level_scene).instantiate()
 
-	#add_child(next_level)
 	add_child.call_deferred(next_level)
 	current_level.queue_free()
 

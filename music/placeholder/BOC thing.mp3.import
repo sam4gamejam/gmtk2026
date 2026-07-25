@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctyh3i1dcc8eh"
+path="res://.godot/imported/BOC thing.mp3-4740e17339a9b11a4577e00fd0a24077.mp3str"
+
+[deps]
+
+source_file="res://music/placeholder/BOC thing.mp3"
+dest_files=["res://.godot/imported/BOC thing.mp3-4740e17339a9b11a4577e00fd0a24077.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
