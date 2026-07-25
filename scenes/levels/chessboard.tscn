@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://tfo1un68xdg7"]
 
+[ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_3wofg"]
+[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_78mf2"]
+[ext_resource type="AudioStream" uid="uid://beqmbd7tabjcp" path="res://music/placeholder/chess demo idea.mp3" id="2_rklgw"]
+
 [node name="Chessboard" type="Node2D" unique_id=806930679]
+script = ExtResource("1_78mf2")
+music = ExtResource("2_rklgw")
+
+[node name="Environment" type="Node2D" parent="." unique_id=182504269]
+
+[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("1_3wofg")]
+position = Vector2(237, 125)
+
+[node name="placeholder" type="Label" parent="." unique_id=1079228766]
+offset_left = 111.0
+offset_top = 19.0
+offset_right = 151.0
+offset_bottom = 42.0
+text = "Chessboard level"

@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://cdu76aymqn5vc"]
 
+[ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_7udga"]
+[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_kjl4t"]
+[ext_resource type="AudioStream" uid="uid://fitjivdmok6w" path="res://music/placeholder/depths demo.mp3" id="2_bh4tv"]
+
 [node name="Depths" type="Node2D" unique_id=101117890]
+script = ExtResource("1_kjl4t")
+next_level_scene = "uid://bleuu8syvxa5v"
+music = ExtResource("2_bh4tv")
+
+[node name="Environment" type="Node2D" parent="." unique_id=282069784]
+
+[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("1_7udga")]
+position = Vector2(76, 102)
+
+[node name="placeholder" type="Label" parent="." unique_id=1207426005]
+offset_left = 111.0
+offset_top = 19.0
+offset_right = 151.0
+offset_bottom = 42.0
+text = "Depth level"

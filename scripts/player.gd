@@ -6,19 +6,19 @@ signal tile_moved(tile: PickableTile)
 @onready var can_move: bool = true
 @onready var tile_is_already_picked: bool = false
 
-@onready var layer: InteractableLayer = $"../LevelHub/InteractableLayer"
 @onready var move_timer := $MoveCooldownTimer
 @onready var sprite := $AnimatedSprite2D
+@onready var world = get_node("/root/World")
 
+var previous_vec_quadrant: Vector2 = Vector2.ZERO
+var layer: InteractableLayer
 var tile: PickableTile
-var previous_quadrant: int = 0
 
 func _ready() -> void:
 	position = position.snapped(Globals.tilesize)
 
 	move_timer.timeout.connect(move_timer_completed)
 	player_picked_tile.connect(on_tile_picked)
-	tile_moved.connect(layer.tile_just_moved)
 	tile_moved.connect(self.tile_just_moved)
 
 func _process(_delta: float) -> void:
@@ -45,7 +45,6 @@ func _process(_delta: float) -> void:
 			tile_moved.emit(tile)
 
 func change_player_sprite(movedir: Vector2) -> void:
-	#print('movedir ', movedir)
 	match movedir:
 		Vector2.LEFT:
 			sprite.animation = 'left'
@@ -57,7 +56,12 @@ func change_player_sprite(movedir: Vector2) -> void:
 			sprite.animation = 'up'
 
 func level_changed(new_level: Node2D) -> void:
-	layer = new_level.get_node("InteractableLayer")
+	# If we change the level, disconnect then reconnect the tile signal to the new level just in case
+	if layer != null and tile_moved.is_connected(layer.tile_just_moved):
+		tile_moved.disconnect(layer.tile_just_moved)
+
+	layer = new_level.get_node("Environment/InteractableLayer")
+	tile_moved.connect(layer.tile_just_moved)
 
 func move_object(body, movedir: Vector2) -> bool:
 	var new_position = body.position + movedir * Globals.tilesize
@@ -93,16 +97,11 @@ func on_tile_picked() -> void:
 
 func tile_just_moved(tile: PickableTile) -> void:
 	var angle: float = (tile.global_position - global_position).angle()
-	var quadrant = snappedf(angle, PI/4)
+	var quadrant: float = snappedf(angle, PI/4)
+	var vec_quadrant: Vector2 = Vector2(cos(quadrant), sin(quadrant))
 
-	# Direction (1, 0) is not found if we use -pi, so hardcode it?
-	#if quadrant == -PI:
-		#quadrant = 0.0
-
-	print('quadrant ', quadrant, ' int vector ', Vector2(cos(quadrant), sin(quadrant)))
-
-	if previous_quadrant == quadrant:
+	if previous_vec_quadrant == vec_quadrant:
 		return
 
-	previous_quadrant = quadrant
-	change_player_sprite(Vector2i(cos(quadrant), sin(quadrant)))
+	previous_vec_quadrant = vec_quadrant
+	change_player_sprite(vec_quadrant)
