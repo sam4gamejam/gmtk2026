@@ -1,10 +1,16 @@
 [gd_scene format=4 uid="uid://vmc8rn0bwtcg"]
 
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="1_lnkn2"]
+[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_oq38d"]
+[ext_resource type="AudioStream" uid="uid://cmckh5jsbnwma" path="res://music/placeholder/hotel loop demo_alt guitar.mp3" id="2_6hfgu"]
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="2_b35rn"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="2_isorx"]
+[ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="4_b35rn"]
 
 [node name="HotelRoom" type="Node2D" unique_id=1110181298]
+script = ExtResource("1_oq38d")
+next_level_scene = "uid://d08a01vp7gpoc"
+music = ExtResource("2_6hfgu")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1046173471]
 
@@ -20,3 +26,6 @@ tile_map_data = PackedByteArray("AAAKAAMABwAPAAIAAAALAAMABwAQAAIAAAAMAAMABwARAAI
 tile_set = ExtResource("2_b35rn")
 
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("2_isorx")]
+
+[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("4_b35rn")]
+position = Vector2(30, 102)

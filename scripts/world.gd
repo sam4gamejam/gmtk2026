@@ -1,11 +1,12 @@
 extends Node2D
 
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var first_level = $LevelHub
+@onready var first_level := $LevelHub
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 
 func _ready() -> void:
 	change_music(first_level.music)
+	player.level_changed(first_level)
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("exit"):
@@ -21,8 +22,10 @@ func change_level(current_level: Node2D, next_level_scene: String) -> void:
 	add_child.call_deferred(next_level)
 	current_level.queue_free()
 
-	##pass next_level.music.position or some such to continue the next track at the same position as the second argument
-	change_music(next_level.music)
+	## pass next_level.music.position or some such to continue the next track
+	## at the same position as the second argument
+	if "music" in next_level:
+		change_music(next_level.music)
 
 	## This could be a signal, but the world needs to change first, so I just put it as a function for now
 	player.level_changed(next_level)
