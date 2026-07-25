@@ -4,6 +4,8 @@ extends Node2D
 @export var music: AudioStream
 ## Number of moves the player is allowed to do, -1 for no limit
 @export var allowed_moves: int = -1
+##If true, the player will move between tiles in case of collision
+@export var half_tile_movement_allowed: bool = true
 
 @onready var area_next_level := $NextLevel
 @onready var environment := $Environment
