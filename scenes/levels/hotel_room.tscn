@@ -30,10 +30,10 @@ tile_set = ExtResource("2_b35rn")
 tile_map_data = PackedByteArray("AAAEAAIABAAGAAUAAAAEAAQABAAGAAUAAAAEAAUABAAGAAYAAAAEAAYABAAGAAcAAAAEAAcABAAGAAgAAAAEAAEABAAGAAIAAAAFAAEABAAIAAIAAAAGAAEABAAJAAIAAAAHAAEABAAKAAIAAAAIAAEABAALAAIAAAAFAAIABAAHAAMAAAAGAAIABAAIAAMAAAAGAAMABAAIAAQAAAAEAAgABAAGAAkAAAAFAAMABAAHAAQAAAAEAAMABAAGAAYAAAA=")
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("4_b35rn")]
-position = Vector2(101, 133)
+position = Vector2(112, 141)
 
 [node name="NextLevel2" parent="." unique_id=567300624 instance=ExtResource("4_b35rn")]
-position = Vector2(149, 132)
+position = Vector2(163, 141)
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("7_6hfgu")]
 position = Vector2(98, 77)
