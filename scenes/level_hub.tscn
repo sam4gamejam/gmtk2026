@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://tnxcfhcmk2je" path="res://music/placeholder/hotel loop demo_1.mp3" id="2_wyviu"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="3_7750w"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="5_7750w"]
+[ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="7_iwcab"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwcab"]
 texture = ExtResource("2_73tgf")
@@ -244,7 +245,7 @@ next_level_scene = "uid://cj5ho4jei52nx"
 music = ExtResource("2_wyviu")
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("5_7750w")]
-position = Vector2(139, 14)
+position = Vector2(22, 121)
 
 [node name="Environment" type="Node2D" parent="." unique_id=592580496]
 
@@ -255,3 +256,7 @@ tile_set = SubResource("TileSet_iwcab")
 
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("3_7750w")]
 tile_map_data = PackedByteArray("AAAJAAgAAAAJAAgAAAAKAAgAAAAJAAgAAAAIAAgAAAAJAAgAAAAIAAkAAAAJAAgAAAAIAAoAAAAJAAgAAAAKAAkAAAAJAAgAAAAKAAoAAAAJAAgAAAA=")
+
+[node name="Bed" type="TileMapLayer" parent="Environment" unique_id=1399395925]
+tile_map_data = PackedByteArray("AAAKAAMABwAPAAIAAAALAAMABwAQAAIAAAAMAAMABwARAAIAAAAKAAQABwAPAAMAAAAKAAUABwAPAAQAAAAKAAYABwAPAAUAAAALAAQABwAQAAMAAAAMAAQABwARAAMAAAAMAAUABwARAAQAAAALAAUABwAQAAQAAAALAAYABwAQAAUAAAAMAAYABwARAAUAAAA=")
+tile_set = ExtResource("7_iwcab")

@@ -29,3 +29,4 @@ func change_level(current_level: Node2D, next_level_scene: String) -> void:
 
 	## This could be a signal, but the world needs to change first, so I just put it as a function for now
 	player.level_changed(next_level)
+	Globals.assign_number_of_moves(next_level.allowed_moves)
