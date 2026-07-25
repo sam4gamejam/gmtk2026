@@ -252,4 +252,4 @@ tile_set = SubResource("TileSet_iwcab")
 tile_map_data = PackedByteArray("AAAJAAgAAAAJAAgAAAAKAAgAAAAJAAgAAAAIAAgAAAAJAAgAAAAIAAkAAAAJAAgAAAAIAAoAAAAJAAgAAAAKAAkAAAAJAAgAAAAKAAoAAAAJAAgAAAA=")
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("5_7750w")]
-position = Vector2(140, 3)
+position = Vector2(139, 14)

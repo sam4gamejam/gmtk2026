@@ -4,7 +4,6 @@ signal player_picked_tile
 signal tile_moved(tile: PickableTile)
 
 @onready var can_move: bool = true
-@onready var level_is_changing: bool = false
 @onready var tile_is_already_picked: bool = false
 
 @onready var layer: InteractableLayer = $"../LevelHub/InteractableLayer"

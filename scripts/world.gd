@@ -19,9 +19,11 @@ func change_music(stream: AudioStream, from_position: float = 0.0) -> void:
 	audio_player.stream = stream
 	audio_player.play(from_position)
 
-func change_level(current_level: Node2D, next_level: Node2D) -> void:
+func change_level(current_level: Node2D, next_level_scene: String) -> void:
+	var next_level: Node2D = load(next_level_scene).instantiate()
+
 	add_child(next_level)
-	remove_child(current_level)
+	current_level.queue_free()
 
 	#pass next_level.music.position or some such to continue the next track at the same position as the second argument
 	change_music(next_level.music)

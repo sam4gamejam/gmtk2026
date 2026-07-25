@@ -10,10 +10,14 @@ const transition_time = 1.5
 @onready var screen_fader = world.get_node("ScreenFader")
 @onready var rect_fader = screen_fader.get_node("ColorRect")
 
+@onready var level_is_changing: bool = false
+
 func do_screen_transition(color: Color = Color.BLACK) -> void:
+	if level_is_changing:
+		return
 	print('before timer transition')
+	level_is_changing = true
 	player.can_move = false
-	player.level_is_changing = true
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 
 	screen_fader.visible = true
@@ -28,7 +32,7 @@ func do_screen_transition(color: Color = Color.BLACK) -> void:
 	rect_fader.modulate.a = 1.0
 	screen_fader.visible = false
 
+	level_is_changing = false
 	player.can_move = true
-	player.level_is_changing = false
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	print('after timer transition')
