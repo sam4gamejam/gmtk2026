@@ -240,7 +240,7 @@ sources/0 = SubResource("TileSetAtlasSource_iwcab")
 
 [node name="LevelHub" type="Node2D" unique_id=1536317403]
 script = ExtResource("1_73tgf")
-next_level_scene = "uid://bedibnj3c3vso"
+next_level_scene = "uid://cj5ho4jei52nx"
 music = ExtResource("2_wyviu")
 
 [node name="Background" parent="." unique_id=487721673 instance=ExtResource("1_vrqs0")]
