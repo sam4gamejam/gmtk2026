@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="3_7750w"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="5_7750w"]
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="7_iwcab"]
+[ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="8_osdlv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwcab"]
 texture = ExtResource("2_73tgf")
@@ -260,3 +261,6 @@ tile_map_data = PackedByteArray("AAAJAAgAAAAJAAgAAAAKAAgAAAAJAAgAAAAIAAgAAAAJAAg
 [node name="Bed" type="TileMapLayer" parent="Environment" unique_id=1399395925]
 tile_map_data = PackedByteArray("AAAKAAMABwAPAAIAAAALAAMABwAQAAIAAAAMAAMABwARAAIAAAAKAAQABwAPAAMAAAAKAAUABwAPAAQAAAAKAAYABwAPAAUAAAALAAQABwAQAAMAAAAMAAQABwARAAMAAAAMAAUABwARAAQAAAALAAUABwAQAAQAAAALAAYABwAQAAUAAAAMAAYABwARAAUAAAA=")
 tile_set = ExtResource("7_iwcab")
+
+[node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("8_osdlv")]
+position = Vector2(32, 21)

@@ -4,6 +4,7 @@ signal player_picked_tile
 signal tile_moved(tile: PickableTile)
 
 @onready var can_move: bool = true
+@onready var half_tile_movement_allowed: bool = true
 @onready var tile_is_already_picked: bool = false
 
 @onready var move_timer := $MoveCooldownTimer
@@ -15,7 +16,7 @@ var layer: InteractableLayer
 var tile: PickableTile
 
 func _ready() -> void:
-	snap_player_to_grid()
+	#snap_player_to_grid()
 
 	move_timer.timeout.connect(move_timer_completed)
 	player_picked_tile.connect(on_tile_picked)
@@ -62,10 +63,12 @@ func level_changed(new_level: Node2D) -> void:
 
 	layer = new_level.get_node("Environment/InteractableLayer")
 	tile_moved.connect(layer.tile_just_moved)
-	snap_player_to_grid()
+	half_tile_movement_allowed = new_level.half_tile_movement_allowed
+	snap_player_to_grid(new_level)
 
 func move_object(body, movedir: Vector2) -> bool:
-	var new_position = body.position + movedir * Globals.tilesize
+	var move_vec := movedir * Globals.tilesize
+	var new_position = body.position + move_vec
 	new_position = new_position.clamp(Vector2.ZERO, Globals.screensize - Globals.tilesize)
 
 	# We check a new position to see if we moved, since we can bump into a wall or tile
@@ -74,13 +77,27 @@ func move_object(body, movedir: Vector2) -> bool:
 
 	can_move = false
 	move_timer.start()
+
 	if body == self:
-		#velocity = movedir * Globals.tilesize * 25
-		if test_move(transform, movedir * Globals.tilesize):
+		var move_is_invalid = test_move(transform, move_vec)
+		if move_is_invalid and !half_tile_movement_allowed:
 			print('would have moved into obstacle')
 			return false
-		#move_and_slide()
-	#else:
+		else:
+			# Cut collision by half until it fits
+			var breakout = false
+			while move_is_invalid:
+				move_vec /= 2
+				move_is_invalid = test_move(transform, move_vec)
+				breakout = true
+
+			#TODO: Weird bug if we come from negative coordinate, so halve it again to see if it works better
+			if breakout and move_vec < Vector2.ZERO:
+				move_vec *= 2
+
+			new_position = body.position + move_vec
+			new_position = new_position.clamp(Vector2.ZERO, Globals.screensize - Globals.tilesize)
+
 	## has to be snapped to tilesize/2 because we also move the tiles in this function,
 	## and somehow they will be offset by half if we snap to tilesize...
 	body.position = new_position.snapped(Globals.tilesize/2)
@@ -114,8 +131,12 @@ func on_tile_picked() -> void:
 
 	tile_is_already_picked = !tile_is_already_picked
 
-func snap_player_to_grid() -> void:
-	position = position.snapped(Globals.tilesize)
+func snap_player_to_grid(new_level: Node2D) -> void:
+	if !new_level.has_node("Spawner"):
+		return
+
+	var spawner = new_level.get_node("Spawner")
+	position = spawner.position.snapped(Globals.tilesize)
 
 func tile_just_moved(current_tile: PickableTile) -> void:
 	var angle: float = (current_tile.global_position - global_position).angle()
