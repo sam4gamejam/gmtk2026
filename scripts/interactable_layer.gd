@@ -63,4 +63,3 @@ func place_tile_at(global_pos: Vector2, item: PickableTile) -> bool:
 func tile_just_moved(tile: PickableTile) -> void:
 	var new_color = color_ok_here if is_cell_empty(tile.global_position) else color_not_ok_here
 	change_tile_color(tile, new_color)
-	print('tile moved', global_position, tile.global_position)

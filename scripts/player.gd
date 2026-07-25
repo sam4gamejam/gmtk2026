@@ -11,12 +11,15 @@ signal tile_moved(tile: PickableTile)
 @onready var sprite := $AnimatedSprite2D
 
 var tile: PickableTile
+var previous_quadrant: int = 0
 
 func _ready() -> void:
 	position = position.snapped(Globals.tilesize)
+
+	move_timer.timeout.connect(move_timer_completed)
 	player_picked_tile.connect(on_tile_picked)
 	tile_moved.connect(layer.tile_just_moved)
-	move_timer.timeout.connect(move_timer_completed)
+	tile_moved.connect(self.tile_just_moved)
 
 func _process(_delta: float) -> void:
 	if not can_move:
@@ -42,6 +45,7 @@ func _process(_delta: float) -> void:
 			tile_moved.emit(tile)
 
 func change_player_sprite(movedir: Vector2) -> void:
+	#print('movedir ', movedir)
 	match movedir:
 		Vector2.LEFT:
 			sprite.animation = 'left'
@@ -75,9 +79,6 @@ func move_timer_completed() -> void:
 	move_timer.stop()
 
 func on_tile_picked() -> void:
-	print('tile picked signal emitted!')
-	print(global_position, global_position / Globals.tilesize)
-
 	if tile_is_already_picked:
 		if !layer.place_tile_at(tile.global_position, tile):
 			return
@@ -89,3 +90,19 @@ func on_tile_picked() -> void:
 		layer.change_tile_color(tile, layer.color_ok_here)
 
 	tile_is_already_picked = !tile_is_already_picked
+
+func tile_just_moved(tile: PickableTile) -> void:
+	var angle: float = (tile.global_position - global_position).angle()
+	var quadrant = snappedf(angle, PI/4)
+
+	# Direction (1, 0) is not found if we use -pi, so hardcode it?
+	#if quadrant == -PI:
+		#quadrant = 0.0
+
+	print('quadrant ', quadrant, ' int vector ', Vector2(cos(quadrant), sin(quadrant)))
+
+	if previous_quadrant == quadrant:
+		return
+
+	previous_quadrant = quadrant
+	change_player_sprite(Vector2i(cos(quadrant), sin(quadrant)))
