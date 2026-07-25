@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 signal player_picked_tile
 signal tile_moved(tile: PickableTile)
@@ -15,7 +15,7 @@ var layer: InteractableLayer
 var tile: PickableTile
 
 func _ready() -> void:
-	position = position.snapped(Globals.tilesize)
+	snap_player_to_grid()
 
 	move_timer.timeout.connect(move_timer_completed)
 	player_picked_tile.connect(on_tile_picked)
@@ -62,6 +62,7 @@ func level_changed(new_level: Node2D) -> void:
 
 	layer = new_level.get_node("Environment/InteractableLayer")
 	tile_moved.connect(layer.tile_just_moved)
+	snap_player_to_grid()
 
 func move_object(body, movedir: Vector2) -> bool:
 	var new_position = body.position + movedir * Globals.tilesize
@@ -73,6 +74,13 @@ func move_object(body, movedir: Vector2) -> bool:
 
 	can_move = false
 	move_timer.start()
+	if body == self:
+		#velocity = movedir * Globals.tilesize * 25
+		if test_move(transform, movedir * Globals.tilesize):
+			print('would have moved into obstacle')
+			return false
+		#move_and_slide()
+	#else:
 	## has to be snapped to tilesize/2 because we also move the tiles in this function,
 	## and somehow they will be offset by half if we snap to tilesize...
 	body.position = new_position.snapped(Globals.tilesize/2)
@@ -82,11 +90,22 @@ func move_timer_completed() -> void:
 	can_move = true
 	move_timer.stop()
 
+func increment_tile_moved_counter() -> void:
+	Globals.current_number_of_moves += 1
+	if Globals.max_number_of_moves == -1:
+		return
+
+	if Globals.current_number_of_moves > Globals.max_number_of_moves:
+		print('Total moves went over!')
+		print(Globals.current_number_of_moves, Globals.max_number_of_moves)
+		Globals.current_number_of_moves = 0
+
 func on_tile_picked() -> void:
 	if tile_is_already_picked:
 		if !layer.place_tile_at(tile.global_position, tile):
 			return
 		tile = null
+		increment_tile_moved_counter()
 	else:
 		tile = layer.pick_tile_at(global_position)
 		if tile == null:
@@ -95,8 +114,11 @@ func on_tile_picked() -> void:
 
 	tile_is_already_picked = !tile_is_already_picked
 
-func tile_just_moved(tile: PickableTile) -> void:
-	var angle: float = (tile.global_position - global_position).angle()
+func snap_player_to_grid() -> void:
+	position = position.snapped(Globals.tilesize)
+
+func tile_just_moved(current_tile: PickableTile) -> void:
+	var angle: float = (current_tile.global_position - global_position).angle()
 	var quadrant: float = snappedf(angle, PI/4)
 	var vec_quadrant: Vector2 = Vector2(cos(quadrant), sin(quadrant))
 

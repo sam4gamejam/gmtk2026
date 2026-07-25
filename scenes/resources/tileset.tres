@@ -573,11 +573,10 @@ margins = Vector2i(0, 24)
 14:2/0 = 0
 
 [resource]
+tile_layout = 1
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "pickable"
 custom_data_layer_0/type = 1
-custom_data_layer_1/name = ""
-custom_data_layer_1/type = 0
 sources/0 = SubResource("TileSetAtlasSource_hwdvw")
 sources/1 = SubResource("TileSetAtlasSource_6ixo8")
 sources/2 = SubResource("TileSetAtlasSource_3kt7y")

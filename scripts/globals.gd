@@ -10,10 +10,12 @@ const transition_time = 1.5
 @onready var screen_fader = world.get_node("ScreenFader")
 @onready var rect_fader = screen_fader.get_node("ColorRect")
 
-func make_local_tween(alpha: float) -> Tween:
-	var tween := create_tween()
-	tween.tween_property(rect_fader, "modulate:a", alpha, transition_time/2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	return tween
+var current_number_of_moves: int = 0
+var max_number_of_moves: int = -1
+
+func assign_number_of_moves(new_moves: int) -> void:
+	current_number_of_moves = 0
+	max_number_of_moves = new_moves
 
 func do_screen_transition(current_level: Node2D, next_level_scene: String, color: Color = Color.BLACK) -> void:
 	player.can_move = false
@@ -32,3 +34,8 @@ func do_screen_transition(current_level: Node2D, next_level_scene: String, color
 
 	player.can_move = true
 	player.process_mode = Node.PROCESS_MODE_INHERIT
+
+func make_local_tween(alpha: float) -> Tween:
+	var tween := create_tween()
+	tween.tween_property(rect_fader, "modulate:a", alpha, transition_time/2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	return tween
