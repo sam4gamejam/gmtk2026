@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://d08a01vp7gpoc"]
 
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="1_bwknf"]
+[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_pjuvw"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="2_572a5"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="3_572a5"]
 
 [node name="Hallway" type="Node2D" unique_id=464135504]
+script = ExtResource("1_pjuvw")
+next_level_scene = "uid://bleuu8syvxa5v"
 
 [node name="Environment" type="Node2D" parent="." unique_id=577299227]
 
@@ -14,4 +17,4 @@ tile_map_data = PackedByteArray("AAAJAAEAAwAJAAIAAAAJAAIAAwAJAAMAAAAJAAMAAwAJAAQ
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("2_572a5")]
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("3_572a5")]
-position = Vector2(46, 85)
+position = Vector2(160, 136)

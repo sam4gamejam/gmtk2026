@@ -21,4 +21,4 @@ tile_set = ExtResource("2_v7q1o")
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("2_hws1x")]
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("4_1esq6")]
-position = Vector2(44, 109)
+position = Vector2(176, 56)
