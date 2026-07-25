@@ -12,14 +12,14 @@ script = ExtResource("1_k0juu")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1464022453]
 autoplay = true
 
-[node name="Player" parent="." unique_id=757764057 instance=ExtResource("1_rwgxs")]
-z_index = 1
-position = Vector2(143, 90)
-
-[node name="LevelHub" parent="." unique_id=1536317403 instance=ExtResource("3_4wyf3")]
-
 [node name="ScreenFader" parent="." unique_id=169389264 instance=ExtResource("4_k0juu")]
 layer = 3
 visible = false
 
 [node name="HUD" parent="." unique_id=1715556128 instance=ExtResource("5_qfnet")]
+
+[node name="LevelHub" parent="." unique_id=1536317403 instance=ExtResource("3_4wyf3")]
+
+[node name="Player" parent="." unique_id=757764057 instance=ExtResource("1_rwgxs")]
+z_index = 1
+position = Vector2(143, 90)
