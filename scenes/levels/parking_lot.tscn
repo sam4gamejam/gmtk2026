@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://bnci35td7046r"]
 
-[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_0uvym"]
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="2_7niuo"]
+[ext_resource type="Script" uid="uid://ba2bdyynudqsw" path="res://scripts/parking_lot.gd" id="2_v4igi"]
+[ext_resource type="AudioStream" uid="uid://brtrewbekkh6i" path="res://music/placeholder/parking garage demo.mp3" id="2_xyqeu"]
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="3_7gtwn"]
+[ext_resource type="AudioStream" uid="uid://chsm6c1jg7vxf" path="res://sfx/car start.mp3" id="3_t4mlo"]
+[ext_resource type="AudioStream" uid="uid://dxu0jmt4qjsgb" path="res://sfx/car accelerate.mp3" id="3_xyqeu"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="4_v4igi"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="5_7niuo"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="6_7gtwn"]
@@ -17,7 +20,15 @@ size = Vector2(5, 112)
 size = Vector2(127.5, 6)
 
 [node name="ParkingLot" type="Node2D" unique_id=1867522844]
-script = ExtResource("1_0uvym")
+script = ExtResource("2_v4igi")
+car_start = ExtResource("3_t4mlo")
+car_accelerate = ExtResource("3_xyqeu")
+fade_end_color = null
+next_level_scene = null
+music = ExtResource("2_xyqeu")
+allowed_moves = null
+half_tile_movement_allowed = null
+sprite = null
 
 [node name="Environment" type="Node2D" parent="." unique_id=944273511]
 
@@ -57,5 +68,7 @@ shape = SubResource("RectangleShape2D_wlr5d")
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("5_7niuo")]
 position = Vector2(145, 49)
 
-[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("6_7gtwn")]
-position = Vector2(259, 96)
+[node name="End" parent="." unique_id=1519009390 instance=ExtResource("6_7gtwn")]
+position = Vector2(209, 72)
+
+[node name="NextLevel" parent="." unique_id=2051130798 instance=ExtResource("6_7gtwn")]
