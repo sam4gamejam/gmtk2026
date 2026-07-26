@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_3wofg"]
 [ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_78mf2"]
-[ext_resource type="AudioStream" uid="uid://beqmbd7tabjcp" path="res://music/placeholder/chess demo idea.mp3" id="2_rklgw"]
+[ext_resource type="AudioStream" uid="uid://dupkhuv08oesq" path="res://music/chess demo.mp3" id="2_1s75o"]
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="3_cq7be"]
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="4_1s75o"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="5_2theh"]
@@ -19,7 +19,7 @@ size = Vector2(94, 6)
 
 [node name="Chessboard" type="Node2D" unique_id=806930679]
 script = ExtResource("1_78mf2")
-music = ExtResource("2_rklgw")
+music = ExtResource("2_1s75o")
 
 [node name="Environment" type="Node2D" parent="." unique_id=182504269]
 

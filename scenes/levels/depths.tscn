@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_7udga"]
 [ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_kjl4t"]
-[ext_resource type="AudioStream" uid="uid://fitjivdmok6w" path="res://music/placeholder/depths demo.mp3" id="2_bh4tv"]
+[ext_resource type="AudioStream" uid="uid://bivq6wotaq1ql" path="res://music/depths demo.mp3" id="2_qcb5y"]
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="3_qcb5y"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="3_woq3k"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="5_qcb5y"]
@@ -10,7 +10,7 @@
 [node name="Depths" type="Node2D" unique_id=101117890]
 script = ExtResource("1_kjl4t")
 next_level_scene = "uid://tfo1un68xdg7"
-music = ExtResource("2_bh4tv")
+music = ExtResource("2_qcb5y")
 sprite = "Depth"
 
 [node name="Environment" type="Node2D" parent="." unique_id=282069784]

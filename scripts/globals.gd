@@ -11,6 +11,7 @@ const transition_time = 1.5
 @onready var world = get_node("/root/World")
 @onready var screen_fader = world.get_node("ScreenFader")
 @onready var rect_fader = screen_fader.get_node("ColorRect")
+@onready var sfx_player = world.get_node("SfxPlayer")
 
 var current_number_of_moves: int = 0
 var max_number_of_moves: int = -1
@@ -57,3 +58,7 @@ func increment_tile_moved_counter() -> void:
 
 func scene2node(scene: String) -> Node:
 	return load(scene).instantiate()
+
+func play_sfx(sfx: AudioStream) -> void:
+	sfx_player.stream = sfx
+	sfx_player.play()

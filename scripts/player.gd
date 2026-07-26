@@ -25,17 +25,17 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not can_move:
 		return
-		
+
 	if Input.is_action_just_pressed("pick_tile"):
 		player_picked_tile.emit()
 		return
-		
+
 	var movedir := Input.get_vector("left", "right", "up", "down")
-	
+
 	# Only allow one keypress, we could choose one direction instead of stopping
 	if movedir.length() != 1:
 		return
-		
+
 	var current_move_body = tile if tile_is_already_picked else self
 	var just_moved: bool = move_object(current_move_body, movedir)
 

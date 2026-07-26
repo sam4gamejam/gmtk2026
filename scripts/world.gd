@@ -13,8 +13,9 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 
 func change_music(stream: AudioStream, from_position: float = 0.0) -> void:
-	audio_player.stream = stream
-	audio_player.play(from_position)
+	if stream != null:
+		audio_player.stream = stream
+		audio_player.play(from_position)
 
 func change_level(level_current: Node2D, next_level_scene: String) -> void:
 	var next_level: Node2D = load(next_level_scene).instantiate()

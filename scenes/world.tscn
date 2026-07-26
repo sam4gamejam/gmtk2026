@@ -12,6 +12,8 @@ script = ExtResource("1_k0juu")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1464022453]
 autoplay = true
 
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1275346902]
+
 [node name="ScreenFader" parent="." unique_id=169389264 instance=ExtResource("4_k0juu")]
 layer = 3
 visible = false

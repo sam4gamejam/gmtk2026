@@ -5,6 +5,8 @@ extends TileMapLayer
 @export var color_ok_here: Color = Color.SEA_GREEN
 @export var color_not_ok_here: Color = Color.DARK_RED
 @export var pickable_item_scene: PackedScene
+@export var sfx_tile_put_down: AudioStream
+@export var sfx_tile_pick_up: AudioStream
 
 func change_tile_color(tile: PickableTile, color: Color) -> void:
 	var new_color = color
@@ -46,7 +48,7 @@ func pick_tile_at(global_pos: Vector2) -> PickableTile:
 
 		item_instance.setup(texture, region, source_id, atlas_coords)
 		item_instance.z_index += 1
-
+		Globals.play_sfx(sfx_tile_pick_up)
 		return item_instance
 
 	return null
@@ -58,6 +60,7 @@ func place_tile_at(global_pos: Vector2, item: PickableTile) -> bool:
 	var map_coords = local_to_map(global_pos)
 	set_cell(map_coords, item.source_id, item.atlas_coords)
 	item.queue_free()
+	Globals.play_sfx(sfx_tile_put_down)
 	return true
 
 func tile_just_moved(tile: PickableTile) -> void:

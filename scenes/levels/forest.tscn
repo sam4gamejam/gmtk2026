@@ -3,11 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_kcawe"]
 [ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_lpqlp"]
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="2_6c4vn"]
+[ext_resource type="AudioStream" uid="uid://yo7l6ogwmr1y" path="res://music/forest demo.mp3" id="2_b3fe0"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="3_b3fe0"]
 
 [node name="Forest" type="Node2D" unique_id=1074914603]
 script = ExtResource("1_lpqlp")
 next_level_scene = "uid://vmc8rn0bwtcg"
+music = ExtResource("2_b3fe0")
 
 [node name="Environment" type="Node2D" parent="." unique_id=833708544]
 
