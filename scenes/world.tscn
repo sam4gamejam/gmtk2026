@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dnvs61pnc6715" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cxa3sqvykgcp8" path="res://scenes/player.tscn" id="1_rwgxs"]
-[ext_resource type="PackedScene" uid="uid://bedibnj3c3vso" path="res://scenes/level_hub.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dpaq8b6a2l7t0" path="res://scenes/screen_fade.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" uid="uid://vmc8rn0bwtcg" path="res://scenes/levels/hotel_room.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://de4dxbtltmevk" path="res://scenes/hud.tscn" id="5_qfnet"]
 
 [node name="World" type="Node2D" unique_id=1333548654]
@@ -18,8 +18,9 @@ visible = false
 
 [node name="HUD" parent="." unique_id=1715556128 instance=ExtResource("5_qfnet")]
 
-[node name="LevelHub" parent="." unique_id=1536317403 instance=ExtResource("3_4wyf3")]
-
 [node name="Player" parent="." unique_id=757764057 instance=ExtResource("1_rwgxs")]
 z_index = 1
 position = Vector2(143, 90)
+
+[node name="HotelRoom" parent="." unique_id=1110181298 instance=ExtResource("5_71j4m")]
+next_level_scene = "uid://bedibnj3c3vso"

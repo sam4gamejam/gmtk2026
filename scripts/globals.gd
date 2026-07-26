@@ -1,5 +1,7 @@
 extends Node
 
+signal do_reset_level
+
 const tilesize = Vector2(16, 16)
 const screensize = Vector2(320, 180)
 const transition_time = 1.5
@@ -12,6 +14,9 @@ const transition_time = 1.5
 
 var current_number_of_moves: int = 0
 var max_number_of_moves: int = -1
+
+func _ready() -> void:
+	pass
 
 func assign_number_of_moves(new_moves: int) -> void:
 	current_number_of_moves = 0
@@ -39,3 +44,16 @@ func make_local_tween(alpha: float) -> Tween:
 	var tween := create_tween()
 	tween.tween_property(rect_fader, "modulate:a", alpha, transition_time/2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	return tween
+
+func increment_tile_moved_counter() -> void:
+	Globals.current_number_of_moves += 1
+	if Globals.max_number_of_moves == -1:
+		return
+
+	if Globals.current_number_of_moves > Globals.max_number_of_moves:
+		print('Total moves went over!')
+		do_reset_level.emit()
+		Globals.current_number_of_moves = 0
+
+func scene2node(scene: String) -> Node:
+	return load(scene).instantiate()

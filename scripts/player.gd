@@ -107,22 +107,12 @@ func move_timer_completed() -> void:
 	can_move = true
 	move_timer.stop()
 
-func increment_tile_moved_counter() -> void:
-	Globals.current_number_of_moves += 1
-	if Globals.max_number_of_moves == -1:
-		return
-
-	if Globals.current_number_of_moves > Globals.max_number_of_moves:
-		print('Total moves went over!')
-		print(Globals.current_number_of_moves, Globals.max_number_of_moves)
-		Globals.current_number_of_moves = 0
-
 func on_tile_picked() -> void:
 	if tile_is_already_picked:
 		if !layer.place_tile_at(tile.global_position, tile):
 			return
 		tile = null
-		increment_tile_moved_counter()
+		Globals.increment_tile_moved_counter()
 	else:
 		tile = layer.pick_tile_at(global_position)
 		if tile == null:

@@ -25,12 +25,13 @@ visible = false
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("3_572a5")]
 z_index = 1
-position = Vector2(-12, 51)
+position = Vector2(146, 154)
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("4_pjuvw")]
-position = Vector2(-1, -52)
+position = Vector2(146, 32)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334255844]
+position = Vector2(147, 85)
 texture = ExtResource("5_wn8kt")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1754328650]

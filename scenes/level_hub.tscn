@@ -244,6 +244,7 @@ sources/0 = SubResource("TileSetAtlasSource_iwcab")
 script = ExtResource("1_73tgf")
 next_level_scene = "uid://cj5ho4jei52nx"
 music = ExtResource("2_wyviu")
+allowed_moves = 2
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("5_7750w")]
 position = Vector2(22, 121)

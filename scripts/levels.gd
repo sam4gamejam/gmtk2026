@@ -15,8 +15,11 @@ extends Node2D
 func _ready() -> void:
 	area_next_level.body_entered.connect(to_next_level, CONNECT_DEFERRED | CONNECT_ONE_SHOT)
 	area_next_level.position = area_next_level.position.snapped(Globals.tilesize)
-
+	Globals.do_reset_level.connect(reset_level)
 	#tack_items_to_grid()
+
+func reset_level(color: Color = Color.CRIMSON) -> void:
+	Globals.do_screen_transition(self, self.get_scene_file_path(), color)
 
 func tack_items_to_grid() -> void:
 	for object in environment.get_children():
