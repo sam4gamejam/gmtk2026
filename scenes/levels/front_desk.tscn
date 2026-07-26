@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_v7q1o"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="2_hws1x"]
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="2_v7q1o"]
+[ext_resource type="AudioStream" uid="uid://tnxcfhcmk2je" path="res://music/placeholder/hotel loop demo_1.mp3" id="2_yoh84"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="4_1esq6"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="6_2tiyu"]
 
 [node name="FrontDesk" type="Node2D" unique_id=1556669825]
 script = ExtResource("1_v7q1o")
+next_level_scene = "uid://cj5ho4jei52nx"
+music = ExtResource("2_yoh84")
 
 [node name="Environment" type="Node2D" parent="." unique_id=2111555577]
 

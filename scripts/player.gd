@@ -8,7 +8,8 @@ signal tile_moved(tile: PickableTile)
 @onready var tile_is_already_picked: bool = false
 
 @onready var move_timer := $MoveCooldownTimer
-@onready var sprite := $AnimatedSprite2D
+@onready var sprite = $Hotel
+
 @onready var world = get_node("/root/World")
 
 var previous_vec_quadrant: Vector2 = Vector2.ZERO
@@ -65,6 +66,15 @@ func level_changed(new_level: Node2D) -> void:
 	tile_moved.connect(layer.tile_just_moved)
 	half_tile_movement_allowed = new_level.half_tile_movement_allowed
 	snap_player_to_grid(new_level)
+
+	sprite = get_node(new_level.sprite)
+	sprite.visible = true
+
+	#TODO Add the other sprites here when done
+	var to_hide = ["Depth", "Hotel"]
+	to_hide.erase(new_level.sprite)
+	for hide in to_hide:
+		get_node(hide).visible = false
 
 func move_object(body, movedir: Vector2) -> bool:
 	var move_vec := movedir * Globals.tilesize

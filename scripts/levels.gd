@@ -6,9 +6,11 @@ extends Node2D
 @export var allowed_moves: int = -1
 ##If true, the player will move between tiles in case of collision
 @export var half_tile_movement_allowed: bool = true
+@export var sprite: String = "Hotel"
 
 @onready var area_next_level := $NextLevel
 @onready var environment := $Environment
+
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 @onready var world := get_node("/root/World")
 

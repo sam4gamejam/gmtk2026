@@ -9,6 +9,7 @@
 [node name="Hallway" type="Node2D" unique_id=464135504]
 script = ExtResource("1_pjuvw")
 next_level_scene = "uid://bleuu8syvxa5v"
+sprite = "Depth"
 
 [node name="Environment" type="Node2D" parent="." unique_id=577299227]
 
