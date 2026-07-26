@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq7nj41cl465s"
+path="res://.godot/imported/elevator open.mp3-4a7c1c3608819d1e4d9447a813c1cf2f.mp3str"
+
+[deps]
+
+source_file="res://sfx/elevator open.mp3"
+dest_files=["res://.godot/imported/elevator open.mp3-4a7c1c3608819d1e4d9447a813c1cf2f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

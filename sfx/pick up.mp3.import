@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwhnwma84b38g"
+path="res://.godot/imported/pick up.mp3-32311c2c6952ecd0c712a0e048d12c2d.mp3str"
+
+[deps]
+
+source_file="res://sfx/pick up.mp3"
+dest_files=["res://.godot/imported/pick up.mp3-32311c2c6952ecd0c712a0e048d12c2d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

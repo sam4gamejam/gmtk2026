@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bivq6wotaq1ql"
+path="res://.godot/imported/depths demo.mp3-a54ece5b78b3a2c870ad8a5224e782a0.mp3str"
+
+[deps]
+
+source_file="res://music/depths demo.mp3"
+dest_files=["res://.godot/imported/depths demo.mp3-a54ece5b78b3a2c870ad8a5224e782a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
