@@ -7,11 +7,17 @@ extends Node2D
 @export var elevator_close: AudioStream
 @export var elevator_open: AudioStream
 
+@onready var play_fade_scene = true
 func _ready() -> void:
 	change_music(first_level.music)
 	player.level_changed(first_level)
 
 func _process(delta: float) -> void:
+	#TODO make it work
+	if play_fade_scene:
+		Globals.fade_intro(Color.BLACK)
+	play_fade_scene = false
+
 	if Input.is_action_pressed("exit"):
 		get_tree().quit()
 

@@ -76,8 +76,8 @@ func level_changed(new_level: Node2D) -> void:
 	#TODO Add the other sprites here when done
 	var to_hide = ["Depth", "Hotel"]
 	to_hide.erase(new_level.sprite)
-	for hide in to_hide:
-		get_node(hide).visible = false
+	for _hide in to_hide:
+		get_node(_hide).visible = false
 
 func move_object(body, movedir: Vector2) -> bool:
 	var move_vec := movedir * Globals.tilesize

@@ -15,6 +15,7 @@ const transition_time = 1.5
 
 var current_number_of_moves: int = 0
 var max_number_of_moves: int = -1
+var timer_end_screen: float = 4.5
 
 func _ready() -> void:
 	pass
@@ -41,6 +42,38 @@ func do_screen_transition(current_level: Node2D, next_level_scene: String, color
 	player.can_move = true
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 
+func fade_intro(color: Color) -> void:
+	screen_fader.visible = true
+	rect_fader.color = color
+	rect_fader.modulate.a = 0.0
+
+	#await make_local_tween(0.0).finished # Fade in
+	var tween := create_tween()
+	tween.tween_property(rect_fader, "modulate:a", 0.0, 1.5*transition_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	await tween.finished
+
+	rect_fader.modulate.a = 1.0
+	screen_fader.visible = false
+
+func fade_ending(color: Color, end_level: String) -> void:
+	#player.process_mode = Node.PROCESS_MODE_DISABLED
+
+	screen_fader.visible = true
+	rect_fader.color = color
+	rect_fader.modulate.a = 0.0
+
+	await make_local_tween(1.0).finished # Fade out
+	await make_local_tween(0.0).finished # Fade in
+
+	rect_fader.modulate.a = 1.0
+	screen_fader.visible = false
+	var end_level_node: Node2D = load(end_level).instantiate()
+	world.add_child(end_level_node)
+	var canvas = end_level_node.get_node("CanvasLayer")
+
+	await tree.create_timer(timer_end_screen).timeout
+	tree.quit()
+
 func make_local_tween(alpha: float) -> Tween:
 	var tween := create_tween()
 	tween.tween_property(rect_fader, "modulate:a", alpha, transition_time/2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
@@ -59,6 +92,9 @@ func increment_tile_moved_counter() -> void:
 func scene2node(scene: String) -> Node:
 	return load(scene).instantiate()
 
-func play_sfx(sfx: AudioStream) -> void:
+func play_sfx(sfx: AudioStream, wait_till_finished: bool = false) -> void:
 	sfx_player.stream = sfx
 	sfx_player.play()
+
+	if wait_till_finished:
+		await sfx_player.finished
