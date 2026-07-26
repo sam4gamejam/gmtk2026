@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://2o0mk5vkla5d"]
+
+[ext_resource type="Texture2D" uid="uid://ce3620fl2yuya" path="res://graphics/elavator.png" id="1_e78xe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vowhe"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(0, 48, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdcao"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(80, 48, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5sey"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(160, 48, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1wo4"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(80, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuxf4"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(240, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yskt5"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(160, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mc4l"]
+atlas = ExtResource("1_e78xe")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1g8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vowhe")
+}],
+"loop": 1,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdcao")
+}],
+"loop": 1,
+"name": &"Key",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5sey")
+}],
+"loop": 1,
+"name": &"L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1wo4")
+}],
+"loop": 1,
+"name": &"MinusOne",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuxf4")
+}],
+"loop": 1,
+"name": &"MinusThree",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yskt5")
+}],
+"loop": 1,
+"name": &"MinusTwo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mc4l")
+}],
+"loop": 1,
+"name": &"Zero",
+"speed": 5.0
+}]
+
+[node name="UndergroundElevator" type="Node2D" unique_id=384079661]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=370346556]
+sprite_frames = SubResource("SpriteFrames_o1g8r")
+animation = &"MinusOne"

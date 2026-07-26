@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bivq6wotaq1ql" path="res://music/depths demo.mp3" id="2_qcb5y"]
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="3_qcb5y"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="3_woq3k"]
+[ext_resource type="PackedScene" uid="uid://2o0mk5vkla5d" path="res://scenes/elevators/underground_elevator.tscn" id="5_dnxn1"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="5_qcb5y"]
 
 [node name="Depths" type="Node2D" unique_id=101117890]
@@ -25,8 +26,11 @@ tile_map_data = PackedByteArray("AAADAAgABQAJAAEAAAADAAkABQAJAAIAAAAGAAIABQAJAAE
 [node name="BigFish" parent="Environment" unique_id=1907004590 instance=ExtResource("3_qcb5y")]
 tile_map_data = PackedByteArray("AAAJAAIABQALAAAAAAAJAAMABQALAAEAAAAKAAIABQAMAAAAAAAKAAMABQAMAAEAAAALAAIABQANAAAAAAALAAMABQANAAEAAAAMAAIABQAOAAAAAAAMAAMABQAOAAEAAAAMAAgABQAQAAAAAAAMAAkABQAQAAEAAAANAAgABQARAAAAAAANAAkABQARAAEAAAAOAAgABQASAAAAAAAOAAkABQASAAEAAAAPAAgABQATAAAAAAAPAAkABQATAAEAAAAPAAIABQAQAAIAAAAPAAMABQAQAAMAAAAQAAIABQARAAIAAAAQAAMABQARAAMAAAARAAIABQASAAIAAAARAAMABQASAAMAAAASAAIABQATAAIAAAASAAMABQATAAMAAAAEAAgABQALAAIAAAAEAAkABQALAAMAAAAFAAgABQAMAAIAAAAFAAkABQAMAAMAAAAGAAgABQANAAIAAAAGAAkABQANAAMAAAAHAAgABQAOAAIAAAAHAAkABQAOAAMAAAA=")
 
+[node name="UndergroundElevator" parent="." unique_id=384079661 instance=ExtResource("5_dnxn1")]
+position = Vector2(75, 70)
+
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("1_7udga")]
-position = Vector2(198, 99)
+position = Vector2(75, 86)
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("5_qcb5y")]
-position = Vector2(50, 40)
+position = Vector2(64, 98)
