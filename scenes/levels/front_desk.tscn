@@ -25,4 +25,4 @@ tile_set = ExtResource("2_v7q1o")
 position = Vector2(176, 56)
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("6_2tiyu")]
-position = Vector2(122, 120)
+position = Vector2(122, 110)

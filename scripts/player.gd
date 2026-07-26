@@ -121,7 +121,7 @@ func on_tile_picked() -> void:
 
 	tile_is_already_picked = !tile_is_already_picked
 
-func snap_player_to_grid(new_level: Node2D, snap_to_grid: bool = true) -> void:
+func snap_player_to_grid(new_level: Node2D, snap_to_grid: bool = false) -> void:
 	if !new_level.has_node("Spawner"):
 		return
 
