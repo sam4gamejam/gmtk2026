@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqe56qei22wib" path="res://graphics/hotel_w_bed.png" id="3_owi5q"]
 [ext_resource type="Texture2D" uid="uid://bjrkwpkb6hhad" path="res://graphics/hallway.png" id="4_owi5q"]
 [ext_resource type="Texture2D" uid="uid://bf77mcxfri6bv" path="res://graphics/hotel.png" id="5_mwxou"]
-[ext_resource type="Texture2D" uid="uid://d0xv3tpumivje" path="res://graphics/gmtk2026.png" id="7_owi5q"]
+[ext_resource type="Texture2D" uid="uid://2e1sl0rp2byu" path="res://graphics/depths-Sheet.png" id="7_owi5q"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bvpce"]
 
