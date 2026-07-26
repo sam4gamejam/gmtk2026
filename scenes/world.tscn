@@ -23,4 +23,3 @@ z_index = 1
 position = Vector2(143, 90)
 
 [node name="HotelRoom" parent="." unique_id=1110181298 instance=ExtResource("5_71j4m")]
-next_level_scene = "uid://bedibnj3c3vso"

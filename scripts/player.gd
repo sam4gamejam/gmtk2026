@@ -121,12 +121,15 @@ func on_tile_picked() -> void:
 
 	tile_is_already_picked = !tile_is_already_picked
 
-func snap_player_to_grid(new_level: Node2D) -> void:
+func snap_player_to_grid(new_level: Node2D, snap_to_grid: bool = true) -> void:
 	if !new_level.has_node("Spawner"):
 		return
 
 	var spawner = new_level.get_node("Spawner")
-	position = spawner.position.snapped(Globals.tilesize)
+	position = spawner.position
+
+	if snap_to_grid:
+		position = position.snapped(Globals.tilesize)
 
 func tile_just_moved(current_tile: PickableTile) -> void:
 	var angle: float = (current_tile.global_position - global_position).angle()
