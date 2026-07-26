@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://jbgs83trhxlc"]
+
+[ext_resource type="Texture2D" uid="uid://bagnadxl3nvt1" path="res://graphics/elavatoranimation.png" id="1_xwhnq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t42ql"]
+atlas = ExtResource("1_xwhnq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i78y"]
+atlas = ExtResource("1_xwhnq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0h3v"]
+atlas = ExtResource("1_xwhnq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4x6o"]
+atlas = ExtResource("1_xwhnq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_733x1"]
+atlas = ExtResource("1_xwhnq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1g8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t42ql")
+}],
+"loop": 1,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8i78y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0h3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4x6o")
+}],
+"loop": 1,
+"name": &"Opeaning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_733x1")
+}],
+"loop": 1,
+"name": &"Opened",
+"speed": 5.0
+}]
+
+[node name="BaseElevator" type="Node2D" unique_id=1636673390]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1387760228]
+sprite_frames = SubResource("SpriteFrames_o1g8r")
+animation = &"Closed"

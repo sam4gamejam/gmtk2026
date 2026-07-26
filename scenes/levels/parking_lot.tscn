@@ -1,3 +1,61 @@
-[gd_scene format=3 uid="uid://bnci35td7046r"]
+[gd_scene format=4 uid="uid://bnci35td7046r"]
+
+[ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_0uvym"]
+[ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="2_7niuo"]
+[ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="3_7gtwn"]
+[ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="4_v4igi"]
+[ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="5_7niuo"]
+[ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="6_7gtwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4mlo"]
+size = Vector2(126.5, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyqeu"]
+size = Vector2(5, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlr5d"]
+size = Vector2(127.5, 6)
 
 [node name="ParkingLot" type="Node2D" unique_id=1867522844]
+script = ExtResource("1_0uvym")
+
+[node name="Environment" type="Node2D" parent="." unique_id=944273511]
+
+[node name="Background" parent="Environment" unique_id=487721673 instance=ExtResource("2_7niuo")]
+tile_map_data = PackedByteArray("AAAGAAMACwAGAAQAAAAGAAQACwAGAAUAAAAGAAUACwAGAAYAAAAHAAMACwAHAAQAAAAHAAQACwAHAAUAAAAHAAUACwAHAAYAAAAIAAMACwAIAAQAAAAIAAQACwAIAAUAAAAIAAUACwAIAAYAAAAIAAYACwAIAAQAAAAJAAEACwAJAAIAAAAJAAIACwAJAAMAAAAJAAMACwAJAAQAAAAJAAQACwAJAAUAAAAJAAUACwAJAAYAAAAJAAYACwAJAAUAAAAKAAEACwAKAAIAAAAKAAIACwAKAAMAAAAKAAMACwAKAAQAAAAKAAQACwAKAAUAAAAKAAUACwAKAAYAAAAKAAYACwAKAAUAAAALAAMACwALAAQAAAALAAQACwALAAUAAAALAAUACwALAAYAAAALAAYACwALAAYAAAAMAAMACwAMAAQAAAAMAAQACwAMAAUAAAAMAAUACwAMAAYAAAANAAMACwANAAQAAAANAAQACwANAAUAAAANAAUACwANAAYAAAAIAAkACwAIAAgAAAAJAAkACwAJAAgAAAAKAAkACwAKAAgAAAALAAkACwALAAgAAAAIAAcACwAIAAUAAAAJAAcACwAJAAYAAAAKAAcACwAKAAYAAAALAAcACwALAAYAAAAIAAgACwAIAAYAAAAJAAgACwAJAAcAAAAKAAgACwAKAAcAAAALAAgACwALAAcAAAAGAAYACwAGAAQAAAAHAAYACwAHAAQAAAAGAAcACwAGAAUAAAAHAAcACwAHAAUAAAAGAAgACwAGAAYAAAAHAAgACwAHAAYAAAANAAYACwANAAQAAAAMAAYACwAMAAQAAAANAAcACwANAAUAAAAMAAcACwAMAAUAAAANAAgACwANAAYAAAAMAAgACwAMAAYAAAA=")
+
+[node name="Objects_1" type="TileMapLayer" parent="Environment" unique_id=108211237]
+tile_map_data = PackedByteArray("AAALAAgADAAGAAUAAAAMAAgADAAHAAUAAAANAAgADAAIAAUAAAALAAcADAAGAAUAAAAMAAcADAAHAAUAAAANAAcADAAIAAUAAAALAAQADAADAAUAAAAMAAQADAAEAAUAAAANAAQADAAFAAUAAAA=")
+tile_set = ExtResource("3_7gtwn")
+
+[node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("4_v4igi")]
+
+[node name="Wall_1" type="StaticBody2D" parent="Environment" unique_id=1286072807]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_1" unique_id=689005872]
+position = Vector2(159.75, 148)
+shape = SubResource("RectangleShape2D_t4mlo")
+
+[node name="Wall_2" type="StaticBody2D" parent="Environment" unique_id=1383536662]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_2" unique_id=1702410466]
+position = Vector2(227, 97)
+shape = SubResource("RectangleShape2D_xyqeu")
+
+[node name="Wall_3" type="StaticBody2D" parent="Environment" unique_id=586178997]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_3" unique_id=1598302875]
+position = Vector2(93, 97)
+shape = SubResource("RectangleShape2D_xyqeu")
+
+[node name="Wall_4" type="StaticBody2D" parent="Environment" unique_id=861289140]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_4" unique_id=1895504952]
+position = Vector2(160.25, 44)
+shape = SubResource("RectangleShape2D_wlr5d")
+
+[node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("5_7niuo")]
+position = Vector2(145, 49)
+
+[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("6_7gtwn")]
+position = Vector2(259, 96)
