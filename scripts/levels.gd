@@ -26,6 +26,9 @@ func _ready() -> void:
 	if self.name in to_disable:
 		print('disabling exit until goal!')
 		collision_next_level.set_deferred("disabled", true)
+		if self.name == "Depths":
+			if has_node("UndergroundElevator"):
+				$UndergroundElevator/AnimatedSprite2D.play("MinusOne")
 		if self.name == "Chessboard":
 			if has_node("UndergroundElevator"):
 				$UndergroundElevator/AnimatedSprite2D.play("MinusTwo")
@@ -50,10 +53,8 @@ func goal_achieved() -> void:
 	match self.name:
 		"FrontDesk":
 			$BaseElevator/AnimatedSprite2D.play("Opening")
-		"Depths":
-			pass
-		"Chessboard":
-			pass
+		"Depths", "Chessboard":
+			$UndergroundElevator/AnimatedSprite2D.play("Down")
 		_:
 			pass
 
