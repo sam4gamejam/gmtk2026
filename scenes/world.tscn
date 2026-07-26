@@ -23,3 +23,5 @@ z_index = 1
 position = Vector2(143, 90)
 
 [node name="HotelRoom" parent="." unique_id=1110181298 instance=ExtResource("5_71j4m")]
+
+[editable path="HotelRoom"]
