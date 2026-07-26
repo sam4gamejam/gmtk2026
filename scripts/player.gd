@@ -120,7 +120,6 @@ func move_timer_completed() -> void:
 	move_timer.stop()
 
 func on_tile_picked() -> void:
-	print("a")
 	if tile_is_already_picked:
 		if !layer.place_tile_at(tile.global_position, tile):
 			return
