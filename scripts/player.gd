@@ -18,7 +18,6 @@ var tile: PickableTile
 
 func _ready() -> void:
 	#snap_player_to_grid()
-
 	move_timer.timeout.connect(move_timer_completed)
 	player_picked_tile.connect(on_tile_picked)
 	tile_moved.connect(self.tile_just_moved)
@@ -26,17 +25,17 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not can_move:
 		return
-
+		
 	if Input.is_action_just_pressed("pick_tile"):
 		player_picked_tile.emit()
 		return
-
+		
 	var movedir := Input.get_vector("left", "right", "up", "down")
-
+	
 	# Only allow one keypress, we could choose one direction instead of stopping
 	if movedir.length() != 1:
 		return
-
+		
 	var current_move_body = tile if tile_is_already_picked else self
 	var just_moved: bool = move_object(current_move_body, movedir)
 
@@ -62,8 +61,11 @@ func level_changed(new_level: Node2D) -> void:
 	if layer != null and tile_moved.is_connected(layer.tile_just_moved):
 		tile_moved.disconnect(layer.tile_just_moved)
 
-	layer = new_level.get_node("Environment/InteractableLayer")
-	tile_moved.connect(layer.tile_just_moved)
+	var layers = new_level.find_children("*", "InteractableLayer", true, false)
+	if layers.size() > 0:
+		layer = layers[0]
+	else:
+		layer = new_level.find_child("InteractableLayer", true, false)
 	half_tile_movement_allowed = new_level.half_tile_movement_allowed
 	snap_player_to_grid(new_level)
 

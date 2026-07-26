@@ -1,8 +1,21 @@
-[gd_scene format=3 uid="uid://tfo1un68xdg7"]
+[gd_scene format=4 uid="uid://tfo1un68xdg7"]
 
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="1_3wofg"]
 [ext_resource type="Script" uid="uid://d3d56dwnxqnt3" path="res://scripts/levels.gd" id="1_78mf2"]
 [ext_resource type="AudioStream" uid="uid://beqmbd7tabjcp" path="res://music/placeholder/chess demo idea.mp3" id="2_rklgw"]
+[ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="3_cq7be"]
+[ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="4_1s75o"]
+[ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="5_2theh"]
+[ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="7_1s75o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdj2y"]
+size = Vector2(226, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35s57"]
+size = Vector2(5, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q731v"]
+size = Vector2(94, 6)
 
 [node name="Chessboard" type="Node2D" unique_id=806930679]
 script = ExtResource("1_78mf2")
@@ -10,12 +23,52 @@ music = ExtResource("2_rklgw")
 
 [node name="Environment" type="Node2D" parent="." unique_id=182504269]
 
-[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("1_3wofg")]
-position = Vector2(237, 125)
+[node name="Background" parent="Environment" unique_id=487721673 instance=ExtResource("3_cq7be")]
+tile_map_data = PackedByteArray("AAAKAAEAAQABAAEAAAAJAAEAAQAAAAEAAAAJAAAAAQAAAAAAAAAKAAAAAQABAAAAAAABAAAACQAOAAEAAAABAAEACQAMAAAAAAAAAAIACQAMAAEAAAABAAkACQAMAAEAAAACAAoACQAOAAEAAAAEAAgACQAFAAIAAAAEAAcACQAFAAEAAAAEAAYACQAJAAEAAAADAAcACQAEAAEAAAADAAgACQAEAAIAAAADAAYACQAIAAEAAAADAAUACQAEAAEAAAADAAQACQAIAAEAAAAEAAQACQAJAAEAAAAEAAMACQAFAAEAAAAEAAIACQAFAAAAAAADAAIACQAEAAAAAAADAAMACQAEAAEAAAAFAAIACQAJAAAAAAAGAAIACQAFAAAAAAAHAAIACQAJAAAAAAAIAAIACQAFAAAAAAAJAAIACQAJAAAAAAAKAAIACQAFAAAAAAALAAIACQAJAAAAAAAMAAIACQAFAAAAAAANAAIACQAJAAAAAAAOAAIACQAFAAAAAAAPAAIACQAJAAAAAAAQAAIACQAKAAAAAAAQAAMACQAKAAEAAAAQAAQACQAGAAEAAAAQAAUACQAKAAEAAAAQAAYACQAGAAEAAAAQAAcACQAKAAEAAAAQAAgACQAKAAIAAAAPAAgACQAJAAIAAAAOAAgACQAFAAIAAAANAAgACQAJAAIAAAAMAAgACQAFAAIAAAALAAgACQAJAAIAAAAKAAgACQAFAAIAAAAJAAgACQAJAAIAAAAJAAcACQAJAAEAAAAIAAcACQAFAAEAAAAHAAcACQAJAAEAAAAGAAcACQAFAAEAAAAGAAgACQAFAAIAAAAFAAgACQAJAAIAAAAHAAgACQAJAAIAAAAIAAgACQAFAAIAAAAFAAcACQAJAAEAAAAFAAYACQAFAAEAAAAFAAUACQAJAAEAAAAFAAQACQAFAAEAAAAFAAMACQAJAAEAAAAEAAUACQAFAAEAAAAGAAQACQAJAAEAAAAHAAQACQAFAAEAAAAHAAMACQAJAAEAAAAGAAUACQAFAAEAAAAGAAYACQAJAAEAAAAGAAMACQAFAAEAAAAHAAUACQAJAAEAAAAIAAUACQAFAAEAAAAIAAQACQAJAAEAAAAIAAYACQAJAAEAAAAHAAYACQAFAAEAAAAJAAUACQAJAAEAAAAKAAUACQAFAAEAAAAKAAQACQAJAAEAAAAJAAQACQAFAAEAAAAJAAMACQAJAAEAAAAKAAMACQAFAAEAAAAIAAMACQAFAAEAAAALAAMACQAJAAEAAAAMAAMACQAFAAEAAAANAAMACQAJAAEAAAAOAAMACQAFAAEAAAAPAAMACQAJAAEAAAAPAAQACQAFAAEAAAAPAAUACQAJAAEAAAAOAAUACQAFAAEAAAAOAAYACQAJAAEAAAAOAAcACQAFAAEAAAAPAAYACQAFAAEAAAAPAAcACQAJAAEAAAANAAcACQAJAAEAAAAMAAcACQAFAAEAAAALAAcACQAJAAEAAAALAAYACQAFAAEAAAAMAAYACQAJAAEAAAAMAAUACQAFAAEAAAAKAAYACQAJAAEAAAALAAUACQAJAAEAAAAKAAcACQAFAAEAAAAJAAYACQAFAAEAAAANAAYACQAFAAEAAAAOAAQACQAJAAEAAAANAAQACQAFAAEAAAAMAAQACQAJAAEAAAALAAQACQAFAAEAAAANAAUACQAJAAEAAAASAAgACQAOAAEAAAASAAoACQAOAAAAAAARAAkACQAOAAEAAAARAAAACQAMAAEAAAASAAEACQAMAAAAAAA=")
 
-[node name="placeholder" type="Label" parent="." unique_id=1079228766]
-offset_left = 111.0
-offset_top = 19.0
-offset_right = 151.0
-offset_bottom = 42.0
-text = "Chessboard level"
+[node name="Objects_1" type="TileMapLayer" parent="Environment" unique_id=1171064431]
+tile_map_data = PackedByteArray("AAANAAQACQACAAgAAAANAAMACQACAAcAAAAIAAMACQAKAAgAAAAKAAMACQAKAAgAAAAKAAQACQAKAAgAAAAIAAQACQAKAAgAAAAIAAYACQAKAAgAAAAKAAYACQAKAAgAAAAFAAQACQAPAAgAAAAFAAMACQAPAAcAAAAFAAIACQAPAAYAAAAEAAUACQANAAgAAAAEAAQACQANAAcAAAA=")
+tile_set = ExtResource("4_1s75o")
+
+[node name="Objects_2" type="TileMapLayer" parent="Environment" unique_id=1436771958]
+tile_map_data = PackedByteArray("AAAHAAYACQALAAUAAAAHAAcACQALAAYAAAAHAAMACQALAAUAAAAHAAQACQALAAYAAAAJAAMACQALAAUAAAAJAAQACQALAAYAAAAJAAcACQALAAYAAAALAAYACQALAAUAAAALAAcACQALAAYAAAALAAMACQALAAUAAAALAAQACQALAAYAAAAIAAcACQALAAgAAAAIAAYACQALAAcAAAAKAAcACQADAAgAAAAKAAYACQADAAcAAAA=")
+tile_set = ExtResource("4_1s75o")
+
+[node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("5_2theh")]
+tile_map_data = PackedByteArray("AAANAAUACQABAAgAAAA=")
+
+[node name="Wall_1" type="StaticBody2D" parent="Environment" unique_id=1988551726]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_1" unique_id=499104046]
+position = Vector2(160, 148)
+shape = SubResource("RectangleShape2D_jdj2y")
+
+[node name="Wall_2" type="StaticBody2D" parent="Environment" unique_id=1795424494]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_2" unique_id=1392744186]
+position = Vector2(274.5, 88)
+shape = SubResource("RectangleShape2D_35s57")
+
+[node name="Wall_3" type="StaticBody2D" parent="Environment" unique_id=1933124783]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_3" unique_id=1051461268]
+position = Vector2(45, 88)
+shape = SubResource("RectangleShape2D_35s57")
+
+[node name="Wall_4" type="StaticBody2D" parent="Environment" unique_id=1088083778]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_4" unique_id=49772666]
+position = Vector2(95, 28)
+shape = SubResource("RectangleShape2D_q731v")
+
+[node name="Wall_5" type="StaticBody2D" parent="Environment" unique_id=137310039]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_5" unique_id=869564869]
+position = Vector2(225, 28)
+shape = SubResource("RectangleShape2D_q731v")
+
+[node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("1_3wofg")]
+position = Vector2(160, 21)
+
+[node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("7_1s75o")]
+position = Vector2(144, 32)
