@@ -18,8 +18,8 @@ tile_map_data = PackedByteArray("AAAJAAEAAwAJAAIAAAAJAAIAAwAJAAMAAAAJAAQAAwAJAAU
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("2_572a5")]
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("3_572a5")]
-position = Vector2(152, 143)
+position = Vector2(152, 144)
 rotation = 1.5707964
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("4_pjuvw")]
-position = Vector2(152, 40)
+position = Vector2(152, 41)
