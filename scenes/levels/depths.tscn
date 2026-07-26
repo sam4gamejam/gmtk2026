@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://2o0mk5vkla5d" path="res://scenes/elevators/underground_elevator.tscn" id="5_dnxn1"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="5_qcb5y"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2psdf"]
+size = Vector2(7.5, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch4b2"]
+size = Vector2(271, 6)
+
 [node name="Depths" type="Node2D" unique_id=101117890]
 script = ExtResource("1_kjl4t")
 next_level_scene = "uid://tfo1un68xdg7"
@@ -28,6 +34,30 @@ tile_map_data = PackedByteArray("AAADAAgABQAJAAEAAAADAAkABQAJAAIAAAAGAAIABQAJAAE
 
 [node name="BigFish" parent="Environment" unique_id=1907004590 instance=ExtResource("3_qcb5y")]
 tile_map_data = PackedByteArray("AAAJAAIABQALAAAAAAAJAAMABQALAAEAAAAKAAIABQAMAAAAAAAKAAMABQAMAAEAAAALAAIABQANAAAAAAALAAMABQANAAEAAAAMAAIABQAOAAAAAAAMAAMABQAOAAEAAAAPAAIABQAQAAIAAAAPAAMABQAQAAMAAAAQAAIABQARAAIAAAAQAAMABQARAAMAAAARAAIABQASAAIAAAARAAMABQASAAMAAAASAAIABQATAAIAAAASAAMABQATAAMAAAAEAAgABQALAAIAAAAEAAkABQALAAMAAAAFAAgABQAMAAIAAAAFAAkABQAMAAMAAAAGAAgABQANAAIAAAAGAAkABQANAAMAAAAHAAgABQAOAAIAAAAHAAkABQAOAAMAAAAMAAgABQAQAAIAAAAMAAkABQAQAAMAAAANAAgABQARAAIAAAANAAkABQARAAMAAAAOAAgABQASAAIAAAAOAAkABQASAAMAAAAPAAgABQATAAIAAAAPAAkABQATAAMAAAA=")
+
+[node name="Wall_1" type="StaticBody2D" parent="Environment" unique_id=1687729501]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_1" unique_id=1578687031]
+position = Vector2(27.75, 88)
+shape = SubResource("RectangleShape2D_2psdf")
+
+[node name="Wall_2" type="StaticBody2D" parent="Environment" unique_id=1286948591]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_2" unique_id=1347927390]
+position = Vector2(308, 88)
+shape = SubResource("RectangleShape2D_2psdf")
+
+[node name="Wall_3" type="StaticBody2D" parent="Environment" unique_id=965107543]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_3" unique_id=970220279]
+position = Vector2(167, 176)
+shape = SubResource("RectangleShape2D_ch4b2")
+
+[node name="Wall_4" type="StaticBody2D" parent="Environment" unique_id=1705360524]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_4" unique_id=400918160]
+position = Vector2(168, 3)
+shape = SubResource("RectangleShape2D_ch4b2")
 
 [node name="UndergroundElevator" parent="." unique_id=384079661 instance=ExtResource("5_dnxn1")]
 position = Vector2(75, 70)

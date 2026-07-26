@@ -19,6 +19,12 @@ size = Vector2(5, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q731v"]
 size = Vector2(94, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pul1o"]
+size = Vector2(8, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vt0c"]
+size = Vector2(52, 7)
+
 [node name="Chessboard" type="Node2D" unique_id=806930679]
 script = ExtResource("1_78mf2")
 next_level_scene = "uid://bnci35td7046r"
@@ -72,6 +78,24 @@ shape = SubResource("RectangleShape2D_q731v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_5" unique_id=869564869]
 position = Vector2(225, 28)
 shape = SubResource("RectangleShape2D_q731v")
+
+[node name="Wall_6" type="StaticBody2D" parent="Environment" unique_id=92709061]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_6" unique_id=470296196]
+position = Vector2(182, 15)
+shape = SubResource("RectangleShape2D_pul1o")
+
+[node name="Wall_7" type="StaticBody2D" parent="Environment" unique_id=426927526]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_7" unique_id=2015008402]
+position = Vector2(138, 15)
+shape = SubResource("RectangleShape2D_pul1o")
+
+[node name="Wall_8" type="StaticBody2D" parent="Environment" unique_id=1178811455]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall_8" unique_id=922952608]
+position = Vector2(160, 6.5)
+shape = SubResource("RectangleShape2D_2vt0c")
 
 [node name="UndergroundElevator" parent="." unique_id=384079661 instance=ExtResource("6_2theh")]
 position = Vector2(160, 8)
