@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var area_next_level := $NextLevel
 @onready var environment := $Environment
+@onready var collision_next_level: CollisionShape2D = area_next_level.get_node("CollisionShape2D")
 
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 @onready var world := get_node("/root/World")
@@ -18,7 +19,18 @@ func _ready() -> void:
 	area_next_level.body_entered.connect(to_next_level, CONNECT_DEFERRED | CONNECT_ONE_SHOT)
 	#area_next_level.position = area_next_level.position.snapped(Globals.tilesize)
 	Globals.do_reset_level.connect(reset_level)
+
+	# If we are in a funky world, disable the next level area until goal is complete
+	var to_disable = ["Depths", "Chessboard"] # "Forest"
+	if self.name in to_disable:
+		print('disabling exit until goal!')
+		collision_next_level.set_deferred("disabled", true)
+
 	#tack_items_to_grid()
+
+func goal_achieved() -> void:
+	Globals.play_sfx(world.elevator_open)
+	collision_next_level.set_deferred("disabled", false)
 
 func reset_level(color: Color = Color.CRIMSON) -> void:
 	Globals.do_screen_transition(self, self.get_scene_file_path(), color)

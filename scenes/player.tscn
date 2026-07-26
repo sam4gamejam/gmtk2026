@@ -117,13 +117,13 @@ script = ExtResource("1_3vyb7")
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_g2els")
 
+[node name="MoveCooldownTimer" type="Timer" parent="." unique_id=1594326537]
+wait_time = 0.2
+
 [node name="Hotel" type="AnimatedSprite2D" parent="." unique_id=598449083]
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_mq5r5")
 animation = &"down"
-
-[node name="MoveCooldownTimer" type="Timer" parent="." unique_id=1594326537]
-wait_time = 0.137
 
 [node name="Depth" type="AnimatedSprite2D" parent="." unique_id=2127970208]
 visible = false

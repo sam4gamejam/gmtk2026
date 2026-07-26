@@ -2,17 +2,22 @@
 
 [ext_resource type="Script" uid="uid://dnvs61pnc6715" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cxa3sqvykgcp8" path="res://scenes/player.tscn" id="1_rwgxs"]
+[ext_resource type="AudioStream" uid="uid://io5us2asahfr" path="res://sfx/elevator close.mp3" id="2_i7141"]
+[ext_resource type="AudioStream" uid="uid://cq7nj41cl465s" path="res://sfx/elevator open.mp3" id="3_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dpaq8b6a2l7t0" path="res://scenes/screen_fade.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://vmc8rn0bwtcg" path="res://scenes/levels/hotel_room.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://de4dxbtltmevk" path="res://scenes/hud.tscn" id="5_qfnet"]
 
 [node name="World" type="Node2D" unique_id=1333548654]
 script = ExtResource("1_k0juu")
+elevator_close = ExtResource("2_i7141")
+elevator_open = ExtResource("3_4mrxx")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1464022453]
 autoplay = true
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1275346902]
+volume_db = 4.0
 
 [node name="ScreenFader" parent="." unique_id=169389264 instance=ExtResource("4_k0juu")]
 layer = 3

@@ -4,6 +4,9 @@ extends Node2D
 @onready var first_level := $HotelRoom
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 
+@export var elevator_close: AudioStream
+@export var elevator_open: AudioStream
+
 func _ready() -> void:
 	change_music(first_level.music)
 	player.level_changed(first_level)
@@ -32,3 +35,4 @@ func change_level(level_current: Node2D, next_level_scene: String) -> void:
 	player.level_changed(next_level)
 	Globals.assign_number_of_moves(next_level.allowed_moves)
 	level_current = next_level
+	Globals.play_sfx(elevator_close)

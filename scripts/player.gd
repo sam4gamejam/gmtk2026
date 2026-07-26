@@ -9,8 +9,9 @@ signal tile_moved(tile: PickableTile)
 
 @onready var move_timer := $MoveCooldownTimer
 @onready var sprite = $Hotel
-
 @onready var world = get_node("/root/World")
+
+@onready var walk_time = move_timer.wait_time
 
 var previous_vec_quadrant: Vector2 = Vector2.ZERO
 var layer: InteractableLayer
@@ -106,6 +107,12 @@ func move_object(body, movedir: Vector2) -> bool:
 			#TODO: Weird bug if we come from negative coordinate, so halve it again to see if it works better
 			if breakout and move_vec < Vector2.ZERO:
 				move_vec *= 2
+
+			# Actual move: Now slide it over time
+			#var tween = create_tween()
+			#tween.tween_property(self, "position", position + move_vec, walk_time).set_trans(Tween.TRANS_LINEAR)
+			#await tween.finished
+			#new_position = position.clamp(Vector2.ZERO, Globals.screensize - Globals.tilesize)
 
 			new_position = body.position + move_vec
 			new_position = new_position.clamp(Vector2.ZERO, Globals.screensize - Globals.tilesize)
