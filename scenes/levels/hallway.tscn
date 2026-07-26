@@ -5,10 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="2_572a5"]
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="3_572a5"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="4_pjuvw"]
-[ext_resource type="Texture2D" uid="uid://bjrkwpkb6hhad" path="res://graphics/hallway.png" id="5_wn8kt"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq5r5"]
-size = Vector2(20, 172)
 
 [node name="Hallway" type="Node2D" unique_id=464135504]
 script = ExtResource("1_pjuvw")
@@ -17,14 +13,13 @@ next_level_scene = "uid://bleuu8syvxa5v"
 [node name="Environment" type="Node2D" parent="." unique_id=577299227]
 
 [node name="Background" parent="Environment" unique_id=487721673 instance=ExtResource("1_bwknf")]
-visible = false
-tile_map_data = PackedByteArray("AAAJAAEAAwAJAAIAAAAJAAIAAwAJAAMAAAAJAAQAAwAJAAQAAAAJAAYAAwAJAAcAAAAJAAcAAwAJAAgAAAAJAAgAAwAJAAkAAAAJAAkAAwAJAAoAAAAKAAEAAwAKAAIAAAAKAAIAAwAKAAMAAAAKAAQAAwAKAAQAAAAKAAUAAwAKAAYAAAAKAAYAAwAKAAcAAAAKAAcAAwAKAAgAAAAKAAgAAwAKAAkAAAAKAAkAAwAKAAoAAAAJAAAAAwAJAAEAAAAKAAAAAwAKAAEAAAAJAAMAAwAJAAQAAAAKAAMAAwAKAAQAAAAJAAUAAwAJAAYAAAA=")
+tile_map_data = PackedByteArray("AAAJAAEAAwAJAAIAAAAJAAIAAwAJAAMAAAAJAAQAAwAJAAUAAAAJAAYAAwAJAAcAAAAJAAcAAwAJAAgAAAAJAAgAAwAJAAkAAAAJAAkAAwAJAAoAAAAKAAEAAwAKAAIAAAAKAAIAAwAKAAMAAAAKAAQAAwAKAAUAAAAKAAUAAwAKAAYAAAAKAAYAAwAKAAcAAAAKAAcAAwAKAAgAAAAKAAgAAwAKAAkAAAAKAAkAAwAKAAoAAAAJAAAAAwAJAAEAAAAKAAAAAwAKAAEAAAAJAAMAAwAJAAQAAAAKAAMAAwAKAAQAAAAJAAUAAwAJAAYAAAAIAAAAAwAIAAEAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAMAAAAIAAMAAwAIAAQAAAAIAAQAAwAIAAUAAAAIAAUAAwAIAAYAAAAIAAYAAwAIAAcAAAAIAAcAAwAIAAgAAAAIAAgAAwAIAAkAAAAIAAkAAwAIAAoAAAA=")
 
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("2_572a5")]
-visible = false
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("3_572a5")]
-position = Vector2(160, 136)
+position = Vector2(152, 143)
+rotation = 1.5707964
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("4_pjuvw")]
-position = Vector2(-1, -52)
+position = Vector2(152, 40)
