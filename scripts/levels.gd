@@ -26,6 +26,9 @@ func _ready() -> void:
 	if self.name in to_disable:
 		print('disabling exit until goal!')
 		collision_next_level.set_deferred("disabled", true)
+		if self.name == "Chessboard":
+			if has_node("UndergroundElevator"):
+				$UndergroundElevator/AnimatedSprite2D.play("MinusTwo")
 		if player:
 			player.tile_moved.connect(_on_tile_moved)
 	#tack_items_to_grid()
@@ -46,7 +49,7 @@ func goal_achieved() -> void:
 	collision_next_level.set_deferred("disabled", false)
 	match self.name:
 		"FrontDesk":
-			pass
+			$BaseElevator/AnimatedSprite2D.play("Opening")
 		"Depths":
 			pass
 		"Chessboard":
