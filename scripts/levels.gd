@@ -11,6 +11,7 @@ extends Node2D
 @onready var area_next_level := $NextLevel
 @onready var environment := $Environment
 @onready var collision_next_level: CollisionShape2D = area_next_level.get_node("CollisionShape2D")
+@onready var is_goal_completed: bool = false
 
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 @onready var world := get_node("/root/World")
@@ -21,16 +22,37 @@ func _ready() -> void:
 	Globals.do_reset_level.connect(reset_level)
 
 	# If we are in a funky world, disable the next level area until goal is complete
-	var to_disable = ["Depths", "Chessboard"] # "Forest"
+	var to_disable = ["FrontDesk","Depths", "Chessboard"] # "Forest"
 	if self.name in to_disable:
 		print('disabling exit until goal!')
 		collision_next_level.set_deferred("disabled", true)
-
+		if player:
+			player.tile_moved.connect(_on_tile_moved)
 	#tack_items_to_grid()
+
+func _on_tile_moved(moved_tile: PickableTile) -> void:
+	if is_goal_completed or not has_node("Environment/GoalDetector"):
+		return
+	var interactable_layer = $Environment/InteractableLayer
+	var goal_marker = $Environment/GoalDetector
+	var target_cell = interactable_layer.local_to_map(interactable_layer.to_local(goal_marker.global_position))
+	var tile_cell = interactable_layer.local_to_map(interactable_layer.to_local(moved_tile.global_position))
+	if tile_cell == target_cell:
+		is_goal_completed = true
+		goal_achieved()
 
 func goal_achieved() -> void:
 	Globals.play_sfx(world.elevator_open)
 	collision_next_level.set_deferred("disabled", false)
+	match self.name:
+		"FrontDesk":
+			pass
+		"Depths":
+			pass
+		"Chessboard":
+			pass
+		_:
+			pass
 
 func reset_level(color: Color = Color.CRIMSON) -> void:
 	Globals.do_screen_transition(self, self.get_scene_file_path(), color)

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dwjarvo4bvvcy"]
+
+[ext_resource type="Texture2D" uid="uid://ce3620fl2yuya" path="res://graphics/elavator.png" id="1_hp5lt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp5lt"]
+atlas = ExtResource("1_hp5lt")
+region = Rect2(37, 69, 6.2885933, 6.3450623)
+
+[node name="GoalDetector" type="Marker2D" unique_id=1706196450]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1287367589]
+texture = SubResource("AtlasTexture_hp5lt")

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cr0c3i17wsloy" path="res://scenes/background.tscn" id="3_cq7be"]
 [ext_resource type="TileSet" uid="uid://crcwthcriesie" path="res://scenes/resources/tileset.tres" id="4_1s75o"]
 [ext_resource type="PackedScene" uid="uid://cl4maew5aakih" path="res://scenes/interactable_layer.tscn" id="5_2theh"]
+[ext_resource type="PackedScene" uid="uid://dwjarvo4bvvcy" path="res://scenes/goal_detector.tscn" id="5_35s57"]
 [ext_resource type="PackedScene" uid="uid://2o0mk5vkla5d" path="res://scenes/elevators/underground_elevator.tscn" id="6_2theh"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="7_1s75o"]
 
@@ -33,8 +34,11 @@ tile_map_data = PackedByteArray("AAANAAQACQACAAgAAAANAAMACQACAAcAAAAIAAMACQAKAAg
 tile_set = ExtResource("4_1s75o")
 
 [node name="Objects_2" type="TileMapLayer" parent="Environment" unique_id=1436771958]
-tile_map_data = PackedByteArray("AAAHAAYACQALAAUAAAAHAAcACQALAAYAAAAHAAMACQALAAUAAAAHAAQACQALAAYAAAAJAAMACQALAAUAAAAJAAQACQALAAYAAAAJAAcACQALAAYAAAALAAYACQALAAUAAAALAAcACQALAAYAAAALAAMACQALAAUAAAALAAQACQALAAYAAAAIAAcACQALAAgAAAAIAAYACQALAAcAAAAKAAcACQADAAgAAAAKAAYACQADAAcAAAA=")
+tile_map_data = PackedByteArray("AAAHAAYACQALAAUAAAAHAAcACQALAAYAAAAHAAMACQALAAUAAAAHAAQACQALAAYAAAAJAAMACQALAAUAAAAJAAQACQALAAYAAAAJAAcACQALAAYAAAALAAYACQALAAUAAAALAAcACQALAAYAAAALAAMACQALAAUAAAALAAQACQALAAYAAAAIAAcACQALAAgAAAAIAAYACQALAAcAAAAKAAcACQADAAgAAAAKAAYACQADAAcAAAAJAAYACQALAAUAAAA=")
 tile_set = ExtResource("4_1s75o")
+
+[node name="GoalDetector" parent="Environment" unique_id=1706196450 instance=ExtResource("5_35s57")]
+position = Vector2(88, 104)
 
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("5_2theh")]
 tile_map_data = PackedByteArray("AAANAAUACQABAAgAAAA=")

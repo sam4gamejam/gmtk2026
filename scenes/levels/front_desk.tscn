@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0nk2phe1f4b3" path="res://scenes/next_level.tscn" id="4_1esq6"]
 [ext_resource type="PackedScene" uid="uid://bdftk1c7yu63s" path="res://scenes/spawner.tscn" id="6_2tiyu"]
 [ext_resource type="PackedScene" uid="uid://jbgs83trhxlc" path="res://scenes/elevators/base_elevator.tscn" id="6_yqpit"]
+[ext_resource type="PackedScene" uid="uid://dwjarvo4bvvcy" path="res://scenes/goal_detector.tscn" id="8_174ja"]
 
 [node name="FrontDesk" type="Node2D" unique_id=1556669825]
 script = ExtResource("1_v7q1o")
@@ -23,13 +24,17 @@ tile_map_data = PackedByteArray("AAAGAAIAAgAKAAMAAAAGAAMAAgAKAAMAAAAGAAQAAgAKAAQ
 tile_map_data = PackedByteArray("AAALAAcAAgAIAAUAAAAMAAMAAgAHAAQAAAAHAAQAAgAIAAQAAAAIAAQAAgAJAAQAAAAHAAMAAgAIAAMAAAAIAAMAAgAJAAMAAAA=")
 tile_set = ExtResource("2_v7q1o")
 
+[node name="GoalDetector" parent="Environment" unique_id=1706196450 instance=ExtResource("8_174ja")]
+position = Vector2(184, 72)
+
 [node name="InteractableLayer" parent="Environment" unique_id=328784640 instance=ExtResource("2_hws1x")]
+tile_map_data = PackedByteArray("AAAHAAUADQAAAAAAAAA=")
 
 [node name="BaseElevator" parent="." unique_id=1636673390 instance=ExtResource("6_yqpit")]
 position = Vector2(176, 48)
 
 [node name="NextLevel" parent="." unique_id=1519009390 instance=ExtResource("4_1esq6")]
-position = Vector2(176, 56)
+position = Vector2(176, 55)
 
 [node name="Spawner" parent="." unique_id=423340345 instance=ExtResource("6_2tiyu")]
 position = Vector2(122, 110)
