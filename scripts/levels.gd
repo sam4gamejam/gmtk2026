@@ -14,7 +14,7 @@ extends Node2D
 
 func _ready() -> void:
 	area_next_level.body_entered.connect(to_next_level, CONNECT_DEFERRED | CONNECT_ONE_SHOT)
-	area_next_level.position = area_next_level.position.snapped(Globals.tilesize)
+	#area_next_level.position = area_next_level.position.snapped(Globals.tilesize)
 	Globals.do_reset_level.connect(reset_level)
 	#tack_items_to_grid()
 
